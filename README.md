@@ -26,11 +26,11 @@ Machine learning prediction using scikit learn (random forest and linear regress
 List your team members along with their roles.
 
 - *RAAHUL KANAA.K* - Team Leader
-- *VINOTHAA.S.P* - Role
-- *PRAVIN RAJA.M* - Role
-- *SAMASTHUTHI.P* - Role
-- *RAGUL.S* - Role
-- *SRIRAM.S* - Role
+- *VINOTHAA.S.P* - BACKEND
+- *PRAVIN RAJA.M* - FRONTEND
+- *SAMASTHUTHI.P* - FRONTEND
+- *RAGUL.S* - FRONTEND
+- *SRIRAM.S* - FRONTEND
 
 
 ![Team Photo](media/team-photo.png)
