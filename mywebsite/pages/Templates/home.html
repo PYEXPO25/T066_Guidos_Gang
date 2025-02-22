@@ -1,0 +1,750 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Team Achievements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background-color: gray;
+            background-image: url('static/images/mi2.jpg');
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: blue;
+        }
+
+        .section {
+            height: 100vh;
+            padding: 60px;
+            text-align: center;
+            color: aliceblue;
+            
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #1b045a;
+            color: white;
+            font-size: 18px;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgb(6, 6, 82);
+        }
+        tr:nth-child(odd){
+            background-color: blue;
+        }
+        tr:hover {
+            background-color: rgb(11, 11, 122);
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+
+        }
+
+        
+    
+        .csk {
+            height: 200px;
+            width: 200px;
+            background-color: yellow;
+        }
+        .dc {
+            height: 200px;
+            width: 200px;
+
+            background-color: brown;
+        }
+        .gt {
+            height: 200px;
+            width: 200px;
+            background-color: lightblue;
+
+        }
+        .kkr {
+            height: 200px;
+            width: 200px;
+            background-color: purple;
+
+        }
+        .lsg {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(10, 10, 109);
+
+        }
+        .mi {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+
+        }
+        .pbk {
+            height: 200px;
+            width: 200px;
+            background-color: orangered;
+
+        }
+        .rcb {
+            height: 200px;
+            width: 200px;
+            background-color: darkred;
+        }
+        .rr {
+            height: 200px;
+            width: 200px;
+            background-color: plum;
+
+        }
+        .srh {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(180, 86, 9);
+
+        }
+        /* Wave animation */
+        .wave-container, .wave-container1 {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .wave-container1 {
+            justify-content: right;
+            margin-top: -10px;
+        }
+
+
+        .wave-bar1, .wave-bar2 {
+            width: 10px;
+            height: 10px;
+            animation: wave 1s infinite ease-in-out;
+        }
+
+        .wave-bar1 {
+            background-color: #f8066f;
+        }
+
+        .wave-bar2 {
+            background-color: #0ae841;
+        }
+
+        /* Wave effect */
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1.5); }
+        }
+
+        .wave-bar1:nth-child(1), .wave-bar2:nth-child(1) { animation-delay: 0s; }
+        .wave-bar1:nth-child(2), .wave-bar2:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar1:nth-child(3), .wave-bar2:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar1:nth-child(4), .wave-bar2:nth-child(4) { animation-delay: 0.6s; }
+        .wave-bar1:nth-child(5), .wave-bar2:nth-child(5) { animation-delay: 0.8s; }
+
+    audio {
+        display: none;
+    }  
+        
+
+        
+
+        
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <a href="#home">HOME</a>
+        <a href="#achievements">ACHIEVEMENTS</a>
+        <a href="#schedule">SCHEDULE</a>
+        <a href="{% url 'prediction_view' %}">PREDICTION</a>
+    </div>
+    
+    <audio controls autoplay loop>
+        <source src="ipl_5_theme.mp3" type="audio/mpeg">
+    </audio>       
+    
+    
+    <div class="wave-container">
+        <div class="wave-bar1"></div>
+        <div class="wave-bar1"></div>
+        <div class="wave-bar1"></div>
+        <div class="wave-bar1"></div>
+        <div class="wave-bar1"></div>
+    </div>
+    
+    <div class="wave-container1">
+        <div class="wave-bar2"></div>
+        <div class="wave-bar2"></div>
+        <div class="wave-bar2"></div>
+        <div class="wave-bar2"></div>
+        <div class="wave-bar2"></div>
+    </div>
+    
+
+    <div id="home" class="section">
+        <h1>IPL 2025 WINNER PREDICTION</h1>
+        <h2> WELCOME IPL PREDICTION </h2>
+        <img  class="dc" src="/static/images/DCoutline.png"> <img  class="gt" src="/static/images/GToutline.png"> <img  class="kkr" src="/static/images/KKRoutline.png"> <img  class="lsg" src="/static/images/LSGoutline.png"> <br>
+        <img  class="mi" src="/static/images/MIoutline.png"> <img  class="pbk" src="/static/images/PBKSoutline.png"> <img  class="rcb" src="/static/images/RCBoutline.png"> <br>
+        <img  class="rr" src="/static/images/RRoutline.png"> <img  class="srh" src="/static/images/SRHoutline.png"><br>
+        <img  class="csk" src="/static/images/CSKoutline.png"> 
+    </div>
+
+    <div id="achievements" class="section">
+        <h2>🏅 IPL Team Achievements</h2>
+        <table>
+            <tr>
+                <th>Team</th>
+                <th>Titles</th>
+                <th>Notable Achievements</th>
+            </tr>
+            <tr>
+                <td>Chennai Super Kings (CSK)</td>
+                <td>5</td>
+                <td>Most Playoff Appearances (12), Highest Score: 246/5</td>
+            </tr>
+            <tr>
+                <td>Mumbai Indians (MI)</td>
+                <td>5</td>
+                <td>Most Wins (140+), Biggest Win Margin (146 runs)</td>
+            </tr>
+            <tr>
+                <td>Kolkata Knight Riders (KKR)</td>
+                <td>2</td>
+                <td>Longest Winning Streak (14 matches)</td>
+            </tr>
+            <tr>
+                <td>Rajasthan Royals (RR)</td>
+                <td>1</td>
+                <td>First IPL Champions (2008)</td>
+            </tr>
+            <tr>
+                <td>Sunrisers Hyderabad (SRH)</td>
+                <td>1</td>
+                <td>Highest Score: 277/3</td>
+            </tr>
+            <tr>
+                <td>Royal Challengers Bangalore (RCB)</td>
+                <td>0</td>
+                <td>Highest IPL Score (263/3)</td>
+            </tr>
+            <tr>
+                <td>Delhi Capitals (DC)</td>
+                <td>0</td>
+                <td>Runner-up (2020)</td>
+            </tr>
+            <tr>
+                <td>Punjab Kings (PBKS)</td>
+                <td>0</td>
+                <td>Best Finish: Runner-up (2014)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="schedule" class="section">
+
+        <table>
+            <h1>IPL 2025 Match Schedule</h1>
+             
+            <tr>
+                <th>Date</th>
+                <th>Match</th>
+                <th>Venue</th>
+                <th>Time (IST)</th>
+            </tr>
+        
+        
+            <!-- March Matches -->
+            <tr>
+                <td>March 22</td>
+                <td>Kolkata Knight Riders vs Royal Challengers Bengaluru</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 23</td>
+                <td>Sunrisers Hyderabad vs Rajasthan Royals</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 23</td>
+                <td>Chennai Super Kings vs Mumbai Indians</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 24</td>
+                <td>Delhi Capitals vs Lucknow Super Giants</td>
+                <td>Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 25</td>
+                <td>Gujarat Titans vs Punjab Kings</td>
+                <td>Narendra Modi Stadium, Ahmedabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 26</td>
+                <td>Rajasthan Royals vs Kolkata Knight Riders</td>
+                <td>Barsapara Cricket Stadium, Guwahati</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 27</td>
+                <td>Sunrisers Hyderabad vs Lucknow Super Giants</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 28</td>
+                <td>Chennai Super Kings vs Royal Challengers Bengaluru</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 29</td>
+                <td>Gujarat Titans vs Mumbai Indians</td>
+                <td>Narendra Modi Stadium, Ahmedabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 30</td>
+                <td>Delhi Capitals vs Sunrisers Hyderabad</td>
+                <td>Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 30</td>
+                <td>Rajasthan Royals vs Chennai Super Kings</td>
+                <td>Barsapara Cricket Stadium, Guwahati</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>March 31</td>
+                <td>Mumbai Indians vs Kolkata Knight Riders</td>
+                <td>Wankhede Stadium, Mumbai</td>
+                <td>7:30 PM</td>
+            </tr><tr>
+                <td>April 1</td>
+                <td>Lucknow Super Giants vs Punjab Kings</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 2</td>
+                <td>Royal Challengers Bengaluru vs Gujarat Titans</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 3</td>
+                <td>Kolkata Knight Riders vs Sunrisers Hyderabad</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 4</td>
+                <td>Lucknow Super Giants vs Mumbai Indians</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 5</td>
+                <td>Chennai Super Kings vs Delhi Capitals</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 5</td>
+                <td>Punjab Kings vs Rajasthan Royals</td>
+                <td>IS Bindra Stadium, Mohali</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 6</td>
+                <td>Kolkata Knight Riders vs Lucknow Super Giants</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 6</td>
+                <td>Sunrisers Hyderabad vs Gujarat Titans</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 7</td>
+                <td>Mumbai Indians vs Royal Challengers Bengaluru</td>
+                <td>Wankhede Stadium, Mumbai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 8</td>
+                <td>Punjab Kings vs Chennai Super Kings</td>
+                <td>IS Bindra Stadium, Mohali</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 9</td>
+                <td>Gujarat Titans vs Rajasthan Royals</td>
+                <td>Narendra Modi Stadium, Ahmedabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 10</td>
+                <td>Royal Challengers Bengaluru vs Delhi Capitals</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 11</td>
+                <td>Chennai Super Kings vs Kolkata Knight Riders</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 12</td>
+                <td>Lucknow Super Giants vs Gujarat Titans</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 12</td>
+                <td>Sunrisers Hyderabad vs Punjab Kings</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 13</td>
+                <td>Rajasthan Royals vs Royal Challengers Bengaluru</td>
+                <td>Sawai Mansingh Stadium, Jaipur</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 13</td>
+                <td>Delhi Capitals vs Mumbai Indians</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 14</td>
+                <td>Lucknow Super Giants vs Chennai Super Kings</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 15</td>
+                <td>Punjab Kings vs Kolkata Knight Riders</td>
+                <td>IS Bindra Stadium, Mohali</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 16</td>
+                <td>Delhi Capitals vs Rajasthan Royals</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 17</td>
+                <td>Mumbai Indians vs Sunrisers Hyderabad</td>
+                <td>Wankhede Stadium, Mumbai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 18</td>
+                <td>Royal Challengers Bengaluru vs Punjab Kings</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 19</td>
+                <td>Gujarat Titans vs Delhi Capitals</td>
+                <td>Narendra Modi Stadium, Ahmedabad</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 20</td>
+                <td>Sunrisers Hyderabad vs Mumbai Indians</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 21</td>
+                <td>Rajasthan Royals vs Chennai Super Kings</td>
+                <td>Sawai Mansingh Stadium, Jaipur</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 22</td>
+                <td>Lucknow Super Giants vs Kolkata Knight Riders</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 22</td>
+                <td>Punjab Kings vs Sunrisers Hyderabad</td>
+                <td>IS Bindra Stadium, Mohali</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 23</td>
+                <td>Delhi Capitals vs Mumbai Indians</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 24</td>
+                <td>Royal Challengers Bengaluru vs Rajasthan Royals</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 25</td>
+                <td>Chennai Super Kings vs Sunrisers Hyderabad</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 26</td>
+                <td>Kolkata Knight Riders vs Punjab Kings</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 27</td>
+                <td>Mumbai Indians vs Lucknow Super Giants</td>
+                <td>Wankhede Stadium, Mumbai</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 27</td>
+                <td>Delhi Capitals vs Royal Challengers Bengaluru</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 28</td>
+                <td>Rajasthan Royals vs Gujarat Titans</td>
+                <td>Sawai Mansingh Stadium, Jaipur</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 29</td>
+                <td>Delhi Capitals vs Kolkata Knight Riders</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>April 30</td>
+                <td>Chennai Super Kings vs Punjab Kings</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 1</td>
+                <td>Sunrisers Hyderabad vs Gujarat Titans</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 2</td>
+                <td>Lucknow Super Giants vs Mumbai Indians</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 3</td>
+                <td>Chennai Super Kings vs Royal Challengers Bengaluru</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 4</td>
+                <td>Delhi Capitals vs Rajasthan Royals</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 5</td>
+                <td>Kolkata Knight Riders vs Punjab Kings</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 6</td>
+                <td>Gujarat Titans vs Mumbai Indians</td>
+                <td>Narendra Modi Stadium, Ahmedabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 7</td>
+                <td>Sunrisers Hyderabad vs Chennai Super Kings</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 8</td>
+                <td>Royal Challengers Bengaluru vs Delhi Capitals</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 9</td>
+                <td>Rajasthan Royals vs Lucknow Super Giants</td>
+                <td>Sawai Mansingh Stadium, Jaipur</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 10</td>
+                <td>Punjab Kings vs Gujarat Titans</td>
+                <td>IS Bindra Stadium, Mohali</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr> 
+                <td>May 11</td>
+                <td>Mumbai Indians vs Kolkata Knight Riders</td>
+                <td>Wankhede Stadium, Mumbai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 12</td>
+                <td>Chennai Super Kings vs Delhi Capitals</td>
+                <td>MA Chidambaram Stadium, Chennai</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 13</td>
+                <td>Royal Challengers Bengaluru vs Rajasthan Royals</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 14</td>
+                <td>Lucknow Super Giants vs Sunrisers Hyderabad</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 15</td>
+                <td>Delhi Capitals vs Mumbai Indians</td>
+                <td>Arun Jaitley Stadium, Delhi</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 16</td>
+                <td>Rajasthan Royals vs Punjab Kings</td>
+                <td>Sawai Mansingh Stadium, Jaipur</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 17</td>
+                <td>Royal Challengers Bengaluru vs Kolkata Knight Riders</td>
+                <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 18</td>
+                <td>Gujarat Titans vs Chennai Super Kings</td>
+                <td>Narendra Modi Stadium, Ahmedabad</td>
+                <td>3:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 18</td>
+                <td>Lucknow Super Giants vs Sunrisers Hyderabad</td>
+                <td>Ekana Cricket Stadium, Lucknow</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 20</td>
+                <td>Qualifier 1</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 21</td>
+                <td>Eliminator</td>
+                <td>Rajiv Gandhi International Stadium, Hyderabad</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 23</td>
+                <td>Qualifier 2</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>7:30 PM</td>
+            </tr>
+            <tr>
+                <td>May 25</td>
+                <td>Final</td>
+                <td>Eden Gardens, Kolkata</td>
+                <td>7:30 PM</td>
+            </tr>
+        </div>
+        
+          
+
+    </body>
+</html>
+
+{% endblock %}

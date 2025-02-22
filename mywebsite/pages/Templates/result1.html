@@ -1,0 +1,73 @@
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 50%;
+            margin: auto;
+        }
+        h3 {
+            color: #007bff;
+        }
+        input, select, button {
+            padding: 8px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <div class="container">
+        <h3 style="color: green;">🏏 {{ batting_first }} will bat first.</h3>
+    </div>
+
+    <div class="container">
+        <h3>Enter Match Details</h3>
+        <form action="{% url 'predict_winner' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="batting_first" value="{{ batting_first }}">
+
+            <label for="venue">Select Venue:</label>
+            <select name="venue" id="venue" required>
+                <option value="">--Select Venue--</option>
+                <option value="Wankhede">Wankhede</option>
+                <option value="Chinnaswamy">Chinnaswamy</option>
+                <option value="Eden Gardens">Eden Gardens</option>
+                <option value="Kotla">Kotla</option>
+                <option value="Chepauk">Chepauk</option>
+            </select>
+            <br>
+
+            <label for="present_score">Present Score:</label>
+            <input type="number" name="present_score" id="present_score" required>
+            <br>
+
+            <label for="balls_remaining">Balls Remaining:</label>
+            <input type="number" name="balls_remaining" id="balls_remaining" required>
+            <br>
+
+            <label for="wickets_left">Wickets Left:</label>
+            <input type="number" name="wickets_left" id="wickets_left" required>
+            <br>
+
+            <button type="submit">Predict Winner</button>
+        </form>
+    </div>
+{% endblock %}

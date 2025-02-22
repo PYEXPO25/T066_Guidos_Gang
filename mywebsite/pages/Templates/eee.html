@@ -1,0 +1,15 @@
+{% block content %}
+    <div class="container">
+        <h3>🏏 Match Prediction Result</h3>
+        <p><strong>Batting First:</strong> {{ batting_first }}</p>
+        <p><strong>Venue:</strong> {{ venue }}</p>
+        <p><strong>Present Score:</strong> {{ present_score }}</p>
+        <p><strong>Balls Remaining:</strong> {{ balls_remaining }}</p>
+        <p><strong>Wickets Left:</strong> {{ wickets_left }}</p>
+        <h3 style="color: green;">Predicted Target {{ predicted_target }}</h3>
+        <br>
+        <a href="{% url 'predict_target' %}">
+            <button>Predict Again</button>
+        </a>
+    </div>
+{% endblock %}
