@@ -56,49 +56,161 @@ Follow these steps to clone and run the application locally.
 1. Install [Python](https://www.python.org/downloads/).
 2. Install [Git](https://git-scm.com/).
 3. Clone this repository:
-   bash
-   git clone https://github.com/username/repository-name.git
+   bash 
+   git clone https://github.com/PYEXPO25/T066_Guidos_Gang.git
    
 
-### Installation
-
-1. Navigate to the project directory:
-   bash
-   cd repository-name
-   
-2. Create a virtual environment:
-   bash
-   python -m venv venv
-   
-3. Activate the virtual environment:
-   - On Windows:
-     bash
-     venv\Scripts\activate
-     
-   - On macOS/Linux:
-     bash
-     source venv/bin/activate
-     
-4. Install dependencies:
-   bash
-   pip install -r requirements.txt
-   
-5. Navigate to source
-   bash
-   cd source
-   
+### Below is a sample installation guide tailored for the IPL 2025 Winner Prediction project described in your PDF. Adjust paths, credentials, and filenames as needed for your specific setup.
 
 ---
 
+# IPL 2025 Winner Prediction Installation Guide
+
+This guide outlines how to set up the project—which uses Django for the back end, MySQL for the database, and Scikit-Learn for machine learning predictions—on your local machine.
+
+## Prerequisites
+
+- **Python 3.x** installed  
+- **MySQL** installed and running  
+- **Git** (if cloning the repository)  
+- Basic familiarity with the command line
+
+## Step-by-Step Installation
+
+### 1. Clone the Repository
+
+If you haven’t already downloaded the project, clone the repository:
+
+```bash
+git clone https://github.com/PYEXPO25/T066_Guidos_Gang.git
+cd repository-name
+```
+
+### 2. Create a Virtual Environment
+
+Create a dedicated Python virtual environment:
+
+```bash
+python -m venv venv
+```
+
+### 3. Activate the Virtual Environment
+
+- **Windows:**
+
+  ```bash
+  venv\Scripts\activate
+  ```
+
+- **macOS/Linux:**
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+### 4. Install Dependencies
+
+Install all required Python packages from the `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
+```
+
+*This should install Django, Scikit-Learn, MySQL connector libraries, and any other dependencies required by your project.*
+
+### 5. Set Up the MySQL Database
+
+1. **Create a New Database:**  
+   Log in to MySQL and create a new database (e.g., `ipl2025_db`):
+
+   ```sql
+   CREATE DATABASE ipl2025_db;
+   ```
+
+2. **Configure Database Settings:**  
+   Open your Django project’s `settings.py` file and update the `DATABASES` section with your MySQL credentials:
+
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'ipl2025_db',
+           'USER': 'your_mysql_user',
+           'PASSWORD': 'your_mysql_password',
+           'HOST': 'localhost',
+           'PORT': '3306',
+       }
+   }
+   ```
+
+### 6. Apply Django Migrations
+
+Run Django’s migration commands to set up the database schema:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 7. Training the Machine Learning Model
+
+If your project includes a separate script for training the ML model (using Random Forest and Linear Regression):
+
+```Give command 
+      python manage.py shell
+
+   then run ,
+      exec(open("C:/Users/raahu/Desktop/Django8/mywebsite/pages/train.py").read())
+
+   Output ,
+      Model saved successfully at: C:/Users/raahu/Desktop/Django8/mywebsite/pages/prediction/ml_model.pkl
+
+   same for train1.py 
+   
+
+*Make sure the pkl file exists in your project directory if applicable.*
+
+### 8. Run the Development Server
+
+Start the Django development server:
+
+```bash
+python manage.py runserver
+```
+
+Then open your browser and navigate to [http://127.0.0.1:8000](http://127.0.0.1:8000) to view the application.
+
+
+
+
+
+*Ensure that your training data is available in the expected location.*
+
+### 
+
+- **Environment Variables:**  
+  You might need to set environment variables (like API keys) either in a `.env` file or directly in your hosting environment.
+
+- **Deactivating the Virtual Environment:**  
+  When you’re done working on the project, simply run:
+
+  ```
+  deactivate
+  ```
+
+---
+
+These steps should help you get the project up and running locally. If any part of the installation differs (for example, file names or additional configuration files), adjust the instructions accordingly. Enjoy building and experimenting with your IPL 2025 Winner Prediction project!
+
 ## Start the Application
 
-1. Run the Flask application:
-   bash
-   flask run
+1. Run the Django application:
+   python manage.py runserver
+
    
 2. Open your browser and navigate to:
    
-   http://127.0.0.1:5000/
+   http://127.0.0.1:8000/
    
 
 ---
