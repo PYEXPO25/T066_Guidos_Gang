@@ -24,6 +24,26 @@
         h2 {
             color: #fffcfc;
         }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: blue;
+        }
         .result-box {
             background: rgb(239, 238, 249);
             padding: 20px;
@@ -62,6 +82,15 @@
     <div class="result-box">
         <p><strong>Prediction:</strong> {{ prediction }}</p>
     </div>
+
+    <div class="navbar">
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'home' %}#schedule">SCHEDULE</a>
+        <a href="{% url 'prediction_view' %}">PREDICTION</a>
+    </div>
+
+    
 
     <!-- Feature Importance Graph -->
     <div class="graph-container">

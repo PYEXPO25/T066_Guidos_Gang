@@ -16,6 +16,27 @@
             background-position: center;
         }
 
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: blue;
+        }
+
         .container {
             background: white;
             padding: 20px;
@@ -55,6 +76,12 @@
             background-color: #020302;
         }
     </style>
+    <div class="navbar">
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'home' %}#schedule">SCHEDULE</a>
+        <a href="{% url 'prediction_view' %}">PREDICTION</a>
+    </div>
 
     <div class="container">
         <h3 style="color: rgb(8, 11, 8);">🏏 {{ batting_first }} will bat first.</h3>
