@@ -233,7 +233,8 @@ Images to demonstrate the user interface:
 
 ## Resources
 
-### 📄 PowerPoint Presentation https://1drv.ms/p/c/5b8bde733350660b/EbOTa8YKtadLqDSdCVvq95MBzh2cmp6fono1_ibcDPc79Q?e=t6817m
+### 📄 PowerPoint Presentation
+ https://1drv.ms/p/c/5b8bde733350660b/EbOTa8YKtadLqDSdCVvq95MBzh2cmp6fono1_ibcDPc79Q?e=t6817m
 
 ### 🎥 Project Video
 [Click here to view the project demo video](insert-drive-link-here)
