@@ -3,39 +3,86 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('/static/images/mi2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
             text-align: center;
         }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: blue;
+        }
+
         .container {
             background: white;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             width: 50%;
-            margin: auto;
+            text-align: center;
+            margin-top: 80px;
+            opacity: 0.9;
+            background-image: url('/static/main.jpeg');
         }
+
         h3 {
-            color: #007bff;
+            color: #0c0f12;
         }
-        input, select, button {
+
+        select, button, input {
             padding: 8px;
             font-size: 16px;
-            margin: 10px;
+            margin: 10px auto;
             border-radius: 5px;
+            display: block;
+            width: 80%;
+            border: 1px solid #ccc;
         }
+
         button {
-            background-color: #28a745;
+            background-color: #0a0e0b;
             color: white;
             border: none;
             cursor: pointer;
+            width: 50%;
+            margin: auto;
         }
+
         button:hover {
-            background-color: #218838;
+            background-color: #090909;
+        }
+
+        .team {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
         }
     </style>
 
     <div class="container">
-        <h3 style="color: green;">🏏 {{ batting_first }} will bat first.</h3>
+        <h3 style="color: rgb(10, 23, 10);">🏏 {{ batting_first }} will bat first.</h3>
     </div>
 
     <div class="container">

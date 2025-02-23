@@ -3,11 +3,31 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
-        margin: 50px;
+        margin: 0;
+        padding: 0;
         background-color: #f4f4f4;
+        background-image: url('/static/images/mi2.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
     }
     h2 {
         color: #333;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: 60%;
+        background-color: rgb(249, 241, 241);
+        background-image: url('/static/main.jpeg');
+        text-align: center;
+        opacity: 0.9;
     }
     .result-box {
         background: white;
@@ -16,6 +36,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         display: inline-block;
         margin-top: 20px;
+        opacity: 0.9;
     }
     .btn {
         display: inline-block;
@@ -46,7 +67,7 @@
         <p><strong>Present Score:</strong> {{ present_score }}</p>
         <p><strong>Balls Remaining:</strong> {{ balls_remaining }}</p>
         <p><strong>Wickets Left:</strong> {{ wickets_left }}</p>
-        <h3 style="color: green;">Predicted Target {{ predicted_target }}</h3>
+        <h3 style="color: rgb(12, 15, 12);">Predicted Target {{ predicted_target }}</h3>
         <br>
         <a href="{% url 'predict_target' %}">
             <button>Predict Again</button>

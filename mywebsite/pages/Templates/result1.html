@@ -3,40 +3,62 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('/static/images/mi2.jpg');
+            background-size: cover;
+            background-position: center;
         }
+
         .container {
             background: white;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             width: 50%;
-            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.9;
+            background-image: url('/static/main.jpeg');
         }
+
         h3 {
             color: #007bff;
         }
+
         input, select, button {
             padding: 8px;
             font-size: 16px;
-            margin: 10px;
+            margin: 10px auto;
             border-radius: 5px;
+            display: block;
+            width: 80%;
+            border: 1px solid #ccc;
         }
+
         button {
-            background-color: #28a745;
+            background-color: #000000;
             color: white;
             border: none;
             cursor: pointer;
+            width: 50%;
+            margin: auto;
         }
+
         button:hover {
-            background-color: #218838;
+            background-color: #020302;
         }
     </style>
 
     <div class="container">
-        <h3 style="color: green;">🏏 {{ batting_first }} will bat first.</h3>
-        <h3 style="color: green;">🏏 {{ batting_second }} will bat second.</h3>
+        <h3 style="color: rgb(8, 11, 8);">🏏 {{ batting_first }} will bat first.</h3>
+        <h3 style="color: rgb(8, 12, 8);">🏏 {{ batting_second }} will bat second.</h3>
     </div>
 
     <div class="container">
@@ -44,7 +66,6 @@
         <form action="{% url 'predict_winner' %}" method="POST">
             {% csrf_token %}
             
-            <!-- Hidden Inputs to Pass Selected Teams -->
             <input type="hidden" name="batting_first" value="{{ batting_first }}">
             <input type="hidden" name="batting_second" value="{{ batting_second }}">
 

@@ -1,12 +1,38 @@
 {% block content %}
 <style>
     body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-            background-color: rgb(68, 14, 245);
-        }
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: gray;
+        background-image: url('/static/images/mi2.jpg');
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #333;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 20px;
+        display: inline-block;
+    }
+
+    .navbar a:hover {
+        background: blue;
+    }
 
     .container {
         background: white;
@@ -14,30 +40,38 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         width: 60%;
-        margin: auto;
-        font-family: Arial, sans-serif;
-        scroll-behavior: smooth;
         background-color: rgb(249, 241, 241);
-        background-image: url('static/mi2.jpg');
+        background-image: url('/static/main.jpeg');
+        text-align: center;
+        margin-top: 60px;
     }
+
     h3 {
-        color: #007bff;
+        color: #151718;
     }
+
     select, button {
         padding: 8px;
         font-size: 16px;
-        margin: 10px;
+        margin: 10px auto;
         border-radius: 5px;
+        display: block;
+        width: 80%;
     }
+
     button {
-        background-color: #28a745;
+        background-color: #111311;
         color: white;
         border: none;
         cursor: pointer;
+        width: 50%;
+        margin: auto;
     }
+
     button:hover {
-        background-color: #218838;
+        background-color: #0f1210;
     }
+
     .team {
         display: inline-block;
         width: 45%;
@@ -63,7 +97,7 @@
             <option value="LSG">LSG</option>
             <option value="GT">GT</option>
         </select>
-
+        
         <label for="team2">Select Team 2:</label>
         <select id="team2" name="team2" required>
             <option value="">--Select Team--</option>
@@ -78,7 +112,6 @@
             <option value="LSG">LSG</option>
             <option value="GT">GT</option>
         </select>
-
         <br><br>
         <button type="submit">Next</button>
     </form>
@@ -144,8 +177,6 @@
         </select>
 
         <br><br>
-
-        <!-- Only show "Who will Bat First" if Batting First is selected -->
         <div id="battingFirstSelection" style="display: none;">
             <label for="batting_first">Who will Bat First?</label>
             <select name="batting_first" id="batting_first">
@@ -189,6 +220,4 @@
     }
 </script>
 {% endif %}
-   {% endblock %}
-
-
+{% endblock %}
