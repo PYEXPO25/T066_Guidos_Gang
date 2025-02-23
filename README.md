@@ -1,5 +1,5 @@
 # T066_Guidos_Gang
-![PyExpo Logo](media/pyexpo-logo.png)
+![PyExpo Logo](images/pyexpo-logo.png)
 
 ---
 
