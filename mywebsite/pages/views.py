@@ -1,8 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect # type: ignore
 import random
 from .models import Player
-import joblib
-import numpy as np
+import joblib # type: ignore
+import numpy as np # type: ignore
 from .train1 import predict_match
 
 
@@ -66,17 +66,34 @@ def submit_players(request):
 
 
 def batting_selection(request):
-    """Handles selection of batting first team and renders a new page."""
+    """Handles selection of batting first team and renders the appropriate result page."""
     if request.method == "POST":
         batting_order = request.POST.get("batting_order")
         batting_first = request.POST.get("batting_first")
-        batting_second = request.POST.get("batting_second")
-        if batting_order == "batting_first":
-            return render(request, "result.html", {"batting_first": batting_first})
+        team1 = request.POST.get("team1")
+        team2 = request.POST.get("team2")
+
+        
+
+        # Automatically assign the second team
+        batting_second = team2 if batting_first == team1 else team1
+        
+        if batting_first=="":
+            batting_first = team2 if batting_second == team1 else team1
+        print("📌 Debugging:")
+        print("Batting Order:", batting_order)
+        print("Batting First:", batting_first)
+        print("Batting Second:", batting_second)  # This should now always have a value
+
+        if batting_order == "batting_first":  # This should now always have a value
+
+            return render(request, "result.html", {"batting_first": batting_first, "batting_second": batting_second})
+            
         elif batting_order == "batting_second":
-            return render(request, "result1.html", {"batting_first": batting_first,"batting_second": batting_second})  # Redirect to result1.html for user input
+            return render(request, "result1.html", {"batting_first": batting_first, "batting_second": batting_second})
 
     return redirect("home")
+
 
 def predict_target(request):
     if request.method == 'POST':
@@ -124,6 +141,10 @@ def predict_winner(request):
         present_score = int(request.POST["present_score"])
         wickets_left = int(request.POST["wickets_left"])
         balls_remaining = int(request.POST["balls_remaining"])
+
+        
+        print("Batting First:", team1)
+        print("Batting Second:", team2)
 
         prediction = predict_match(team1, team2, venue, present_score, wickets_left, balls_remaining)
         return render(request, "eee1.html", {"prediction": prediction})

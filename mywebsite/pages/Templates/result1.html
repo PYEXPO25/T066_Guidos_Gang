@@ -36,13 +36,17 @@
 
     <div class="container">
         <h3 style="color: green;">🏏 {{ batting_first }} will bat first.</h3>
+        <h3 style="color: green;">🏏 {{ batting_second }} will bat second.</h3>
     </div>
 
     <div class="container">
         <h3>Enter Match Details</h3>
         <form action="{% url 'predict_winner' %}" method="POST">
             {% csrf_token %}
+            
+            <!-- Hidden Inputs to Pass Selected Teams -->
             <input type="hidden" name="batting_first" value="{{ batting_first }}">
+            <input type="hidden" name="batting_second" value="{{ batting_second }}">
 
             <label for="venue">Select Venue:</label>
             <select name="venue" id="venue" required>

@@ -1,4 +1,44 @@
 {% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+        background-color: #f4f4f4;
+    }
+    h2 {
+        color: #333;
+    }
+    .result-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background: #0056b3;
+    }
+    .graph-container {
+        margin-top: 30px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
     <div class="container">
         <h3>🏏 Match Prediction Result</h3>
         <p><strong>Batting First:</strong> {{ batting_first }}</p>
