@@ -209,7 +209,7 @@ These steps should help you get the project up and running locally. If any part 
    
 2. Open your browser and navigate to:
    
-   http://127.0.0.1:8000/
+   (http://127.0.0.1:8000/)
    
 
 ---
