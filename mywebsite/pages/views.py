@@ -78,16 +78,22 @@ def batting_selection(request):
         # Automatically assign the second team
         batting_second = team2 if batting_first == team1 else team1
         
-        if batting_first=="":
-            batting_first = team2 if batting_second == team1 else team1
-        print("📌 Debugging:")
-        print("Batting Order:", batting_order)
-        print("Batting First:", batting_first)
-        print("Batting Second:", batting_second)  # This should now always have a value
-
         if batting_order == "batting_first":  # This should now always have a value
+            if batting_first=="":
+                batting_first = team1 if batting_second == team1 else team1
+                batting_second = team2 if batting_second == team1 else team2
+                print("📌 Debugging:")
+                print("Batting Order:", batting_order)
+                print("Batting First:", batting_first)
+                print("Batting Second:", batting_second)  # This should ow always have a value
 
-            return render(request, "result.html", {"batting_first": batting_first, "batting_second": batting_second})
+                return render(request, "result.html", {"batting_first": batting_first, "batting_second": batting_second})
+            else:
+                batting_first = team2 if batting_second == team2 else team1
+                batting_second = team1
+                print("Batting First:", batting_first)
+                print("Batting Second:", batting_second)
+                return render(request, "result.html", {"batting_first": batting_first, "batting_second": batting_second})
             
         elif batting_order == "batting_second":
             return render(request, "result1.html", {"batting_first": batting_first, "batting_second": batting_second})
