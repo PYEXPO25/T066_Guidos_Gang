@@ -33,7 +33,7 @@ List your team members along with their roles.
 - *SRIRAM.S* - FRONTEND
 
 
-![Team Photo](media/team-photo.png)
+![Team Photo](team photo.png)
 
 ---
 
