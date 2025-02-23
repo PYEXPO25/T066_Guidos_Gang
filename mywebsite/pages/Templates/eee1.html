@@ -20,30 +20,36 @@
             background-image: url('/static/images/mi2.jpg');
             background-size: cover;
             background-position: center;
-        }
+            padding-top: 60px;  /* Prevent overlap with navbar */
+            }
         h2 {
             color: #fffcfc;
-        }
+            }
 
+            /* Updated Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #333;
+            background: rgba(0, 0, 0, 0.8); /* Slight transparency */
             padding: 10px 0;
             text-align: center;
-        }
+            z-index: 1000;
+            }
 
         .navbar a {
             color: white;
             text-decoration: none;
             padding: 14px 20px;
             display: inline-block;
-        }
+            font-weight: bold;
+            }
 
         .navbar a:hover {
-            background: blue;
-        }
+            background: #0056b3; /* Better visibility */
+            }
+
+            /* Result Box Styling */
         .result-box {
             background: rgb(239, 238, 249);
             padding: 20px;
@@ -52,7 +58,9 @@
             display: inline-block;
             margin-top: 20px;
             opacity: 0.9;
-        }
+            }
+
+            /* Button Styling */
         .btn {
             display: inline-block;
             margin-top: 20px;
@@ -61,21 +69,27 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-        }
+            transition: 0.3s;
+            }
+
         .btn:hover {
-            background: #ffffff;
-        }
+            background: #0056b3;
+            color: white;
+            }
+
+            /* Graph Section */
         .graph-container {
             margin-top: 30px;
             color: white;
-        }
+            }
+
         img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(248, 248, 248, 0.952);
-        }
-    </style>
+            }
+</style>
 </head>
 <body>
     <h2>Match Prediction Result</h2>
