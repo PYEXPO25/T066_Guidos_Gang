@@ -60,7 +60,6 @@ Follow these steps to clone and run the application locally.
    git clone https://github.com/PYEXPO25/T066_Guidos_Gang.git
    
 
-### Below is a sample installation guide tailored for the IPL 2025 Winner Prediction project described in your PDF. Adjust paths, credentials, and filenames as needed for your specific setup.
 
 ---
 
