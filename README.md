@@ -155,16 +155,16 @@ python manage.py migrate
 
 If your project includes a separate script for training the ML model (using Random Forest and Linear Regression):
 
-```terminal
-      python manage.py shell```
+```Give command 
+      python manage.py shell
 
-```py
-      exec(open("C:/Users/raahu/Desktop/Django8/mywebsite/pages/train.py").read())```
+   then run ,
+      exec(open("C:/Users/raahu/Desktop/Django8/mywebsite/pages/train.py").read())
 
-```Output
-      Model saved successfully at: C:/Users/raahu/Desktop/Django8/mywebsite/pages/prediction/ml_model.pkl```
+   Output ,
+      Model saved successfully at: C:/Users/raahu/Desktop/Django8/mywebsite/pages/prediction/ml_model.pkl
 
-same for train1.py 
+   same for train1.py 
    
 
 *Make sure the pkl file exists in your project directory if applicable.*
@@ -234,7 +234,7 @@ Images to demonstrate the user interface:
 ## Resources
 
 ### 📄 PowerPoint Presentation
-[Click here to view the PPT](https://1drv.ms/p/c/5b8bde733350660b/EbOTa8YKtadLqDSdCVvq95MBzh2cmp6fono1_ibcDPc79Q?e=t6817m)
+```(https://1drv.ms/p/c/5b8bde733350660b/EbOTa8YKtadLqDSdCVvq95MBzh2cmp6fono1_ibcDPc79Q?e=t6817m)```
 
 ### 🎥 Project Video
 [Click here to view the project demo video](insert-drive-link-here)
