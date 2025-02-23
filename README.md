@@ -31,9 +31,7 @@ List your team members along with their roles.
 - *SAMASTHUTHI.P* - FRONTEND
 - *RAGUL.S* - FRONTEND
 - *SRIRAM.S* - FRONTEND
-
-
-![Team Photo](team_photo.png)
+![team_photo](https://github.com/user-attachments/assets/2740cc47-233c-4fe8-b983-ba7111505581)
 
 ---
 
