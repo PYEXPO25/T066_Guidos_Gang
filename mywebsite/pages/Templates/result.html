@@ -1,0 +1,122 @@
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url('/static/images/mi2.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #333;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 20px;
+        display: inline-block;
+    }
+
+    .navbar a:hover {
+        background: blue;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: 50%;
+        text-align: center;
+        margin-top: 80px;
+        opacity: 0.9;
+        background-image: url('/static/main.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    h3 {
+        color: #0c0f12;
+    }
+
+    select, button, input {
+        padding: 8px;
+        font-size: 16px;
+        margin: 10px auto;
+        border-radius: 5px;
+        display: block;
+        width: 80%;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background-color: #0a0e0b;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        margin: auto;
+    }
+
+    button:hover {
+        background-color: #090909;
+    }
+</style>
+
+    <div class="navbar">
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'home' %}#schedule">SCHEDULE</a>
+        <a href="{% url 'prediction_view' %}">PREDICTION</a>
+    </div>
+    <div class="container">
+        <h3 style="color: rgb(10, 23, 10);">🏏 {{ batting_first }} will bat first.</h3>
+    </div>
+
+    <div class="container">
+        <h3>Enter Match Details</h3>
+        <form action="{% url 'predict_target' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="batting_first" value="{{ batting_first }}">
+
+            <label for="venue">Select Venue:</label>
+            <select name="venue" id="venue" required>
+                <option value="">--Select Venue--</option>
+                <option value="Wankhede">Wankhede</option>
+                <option value="Chinnaswamy">Chinnaswamy</option>
+                <option value="Eden Gardens">Eden Gardens</option>
+                <option value="Kotla">Kotla</option>
+                <option value="Chepauk">Chepauk</option>
+            </select>
+            <br>
+
+            <label for="present_score">Present Score:</label>
+            <input type="number" name="present_score" id="present_score" required>
+            <br>
+
+            <label for="balls_remaining">Balls Remaining:</label>
+            <input type="number" name="balls_remaining" id="balls_remaining" required>
+            <br>
+
+            <label for="wickets_left">Wickets Left:</label>
+            <input type="number" name="wickets_left" id="wickets_left" required>
+            <br>
+
+            <button type="submit">Predict Target</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,248 @@
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: gray;
+        background-image: url('/static/images/mi2.jpg');
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: blue;
+        }
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #333;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 20px;
+        display: inline-block;
+    }
+
+    .navbar a:hover {
+        background: blue;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: 60%;
+        background-color: rgb(249, 241, 241);
+        background-image: url('/static/main.jpeg');
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    h3 {
+        color: #151718;
+    }
+
+    select, button {
+        padding: 8px;
+        font-size: 20px;
+        margin: 10px auto;
+        border-radius: 5px;
+        display: block;
+        width: 80%;
+    }
+
+    button {
+        background-color: #111311;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        margin: auto;
+    }
+
+    button:hover {
+        background-color: #0f1210;
+    }
+
+    .team {
+        display: inline-block;
+        width: 45%;
+        vertical-align: top;
+    }
+</style>
+
+<div class="navbar">
+    <a href="{% url 'home' %}">HOME</a>
+    <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+    <a href="{% url 'home' %}#schedule">SCHEDULE</a>
+    <a href="{% url 'prediction_view' %}">PREDICTION</a>
+</div>
+
+<div class="container">
+    <h3>Select Teams</h3>
+    <form action="{% url 'select_teams' %}" method="POST">
+        {% csrf_token %}
+        <label for="team1">Select Team 1:</label>
+        <select id="team1" name="team1" required>
+            <option value="">--Select Team--</option>
+            <option value="RCB">RCB</option>
+            <option value="MI">MI</option>
+            <option value="CSK">CSK</option>
+            <option value="DC">DC</option>
+            <option value="PBKS">PBKS</option>
+            <option value="KKR">KKR</option>
+            <option value="SRH">SRH</option>
+            <option value="RR">RR</option>
+            <option value="LSG">LSG</option>
+            <option value="GT">GT</option>
+        </select>
+        
+        <label for="team2">Select Team 2:</label>
+        <select id="team2" name="team2" required>
+            <option value="">--Select Team--</option>
+            <option value="RCB">RCB</option>
+            <option value="MI">MI</option>
+            <option value="CSK">CSK</option>
+            <option value="DC">DC</option>
+            <option value="PBKS">PBKS</option>
+            <option value="KKR">KKR</option>
+            <option value="SRH">SRH</option>
+            <option value="RR">RR</option>
+            <option value="LSG">LSG</option>
+            <option value="GT">GT</option>
+        </select>
+        <br><br>
+        <button type="submit">Next</button>
+    </form>
+</div>
+
+{% if show_players %}
+<div class="container">
+    <h3>Player Selection (Auto-Selected)</h3>
+    <form action="{% url 'submit_players' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="team1" value="{{ team1 }}">
+        <input type="hidden" name="team2" value="{{ team2 }}">
+
+        <div class="team">
+            <h4>{{ team1 }} Players</h4>
+            {% for player in team1_players %}
+                <label>Player {{ forloop.counter }}:</label>
+                <select name="team1_player{{ forloop.counter }}">
+                    {% for available_player in all_team1_players %}
+                        <option value="{{ available_player }}" {% if available_player == player %}selected{% endif %}>
+                            {{ available_player }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <br>
+            {% endfor %}
+        </div>
+        
+        <div class="team">
+            <h4>{{ team2 }} Players</h4>
+            {% for player in team2_players %}
+                <label>Player {{ forloop.counter }}:</label>
+                <select name="team2_player{{ forloop.counter }}">
+                    {% for available_player in all_team2_players %}
+                        <option value="{{ available_player }}" {% if available_player == player %}selected{% endif %}>
+                            {{ available_player }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <br>
+            {% endfor %}
+        </div>
+        
+        <br>
+        <button type="submit">Submit Players</button>
+    </form>
+</div>
+{% endif %}
+
+{% if show_batting_selection %}
+<div class="container">
+    <h3>Select Predicting Type</h3>
+    <form action="{% url 'batting_selection' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="team1" value="{{ team1 }}">
+        <input type="hidden" name="team2" value="{{ team2 }}">
+
+        <label for="batting_order">Choose Predicting Type:</label>
+        <select name="batting_order" id="batting_order" required onchange="handleBattingSelection()">
+            <option value="">-- Select --</option>
+            <option value="batting_first">Batting First</option>
+            <option value="batting_second">Batting Second</option>
+        </select>
+
+        <br><br>
+        <div id="battingFirstSelection" style="display: none;">
+            <label for="batting_first">Who will Bat First?</label>
+            <select name="batting_first" id="batting_first">
+                <option value="">-- Select Team --</option>
+                <option value="{{ team1 }}">{{ team1 }}</option>
+                <option value="{{ team2 }}">{{ team2 }}</option>
+            </select>
+            <br><br>
+        </div>
+
+        <div id="battingSecondSelection" style="display: none;">
+            <label for="batting_first">Who will Bat First?</label>
+            <select name="batting_first" id="batting_first">
+                <option value="">-- Select Team --</option>
+                <option value="{{ team1 }}">{{ team1 }}</option>
+                <option value="{{ team2 }}">{{ team2 }}</option>
+            </select>
+            <br><br>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function handleBattingSelection() {
+        var battingOrder = document.getElementById("batting_order").value;
+        var battingFirstSelection = document.getElementById("battingFirstSelection");
+        var battingSecondSelection = document.getElementById("battingSecondSelection");
+
+        if (battingOrder === "batting_first") {
+            battingFirstSelection.style.display = "block";
+            battingSecondSelection.style.display = "none";
+        } else if (battingOrder === "batting_second") {
+            battingFirstSelection.style.display = "none";
+            battingSecondSelection.style.display = "block";
+        } else {
+            battingFirstSelection.style.display = "none";
+            battingSecondSelection.style.display = "none";
+        }
+    }
+</script>
+{% endif %}
+{% endblock %}
