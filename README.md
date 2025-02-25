@@ -1,5 +1,5 @@
 # T066_Guidos_Gang
-![PyExpo Logo](images/pyexpo-logo.png)
+![PyExpo Logo](media/pyexpo-logo.png)
 
 ---
 
@@ -32,7 +32,7 @@ List your team members along with their roles.
 - *RAGUL.S* - FRONTEND
 - *SRIRAM.S* - FRONTEND
 - 
-![team_photo](images/team-photo.jpg)
+![team_photo](media/team-photo.jpg)
 
 ---
 
