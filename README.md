@@ -234,7 +234,7 @@ Images to demonstrate the user interface:
 ## Resources
 
 ### 📄 PowerPoint Presentation
-[Click here to view the file] (resource/guido's gang.ppt)
+[Click here to view the file](resource/guido's_gang.pptx)
 
 
 ### 🎥 Project Video
