@@ -195,7 +195,7 @@ Then open your browser and navigate to [http://127.0.0.1:8000](http://127.0.0.1:
 
   ```
   deactivate
-  ```
+
 
 ---
 
@@ -234,7 +234,7 @@ Images to demonstrate the user interface:
 ## Resources
 
 ### 📄 PowerPoint Presentation
-[Click here to view the file] `https://1drv.ms/p/c/5b8bde733350660b/EbOTa8YKtadLqDSdCVvq95MBzh2cmp6fono1_ibcDPc79Q?e=t6817m`
+[Click here to view the file] (resource/guido's gang.ppt)
 
 
 ### 🎥 Project Video
