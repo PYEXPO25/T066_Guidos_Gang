@@ -1,0 +1,102 @@
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        background-image: url('/static/images/mi2.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+    .navbar a {
+            color: white;
+            text-decoration:solid;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+    .navbar a:hover {
+            background: blue;
+        }
+    h2 {
+        color: #333;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: 60%;
+        background-color: rgb(249, 241, 241);
+        background-image: url('/static/main.jpeg');
+        text-align: center;
+        opacity: 0.9;
+    }
+    .result-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        margin-top: 20px;
+        opacity: 0.9;
+    }
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background: #0056b3;
+    }
+    .graph-container {
+        margin-top: 30px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+    <div class="navbar">
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'home' %}#schedule">SCHEDULE</a>
+        <a href="{% url 'prediction_view' %}">PREDICTION</a>
+    </div>
+    <div class="container">
+        <h3>🏏 Match Prediction Result</h3>
+        <p><strong>Batting First:</strong> {{ batting_first }}</p>
+        <p><strong>Venue:</strong> {{ venue }}</p>
+        <p><strong>Present Score:</strong> {{ present_score }}</p>
+        <p><strong>Balls Remaining:</strong> {{ balls_remaining }}</p>
+        <p><strong>Wickets Left:</strong> {{ wickets_left }}</p>
+        <h3 style="color: rgb(12, 15, 12);">Predicted Target {{ predicted_target }}</h3>
+        <br>
+        <a href="{% url 'predict_target' %}">
+            <button>Predict Again</button>
+        </a>
+    </div>
+{% endblock %}
