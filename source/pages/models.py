@@ -30,14 +30,13 @@ class BattingFirstPredict(models.Model):
         return f"{self.batting_first} vs {self.team2} at {self.venue}"
 
 
-class Predict_winner(models.Model):
+class Predict_win(models.Model):
     team1 = models.CharField(max_length=100)
     team2 = models.CharField(max_length=100)
     venue = models.CharField(max_length=100)  # 🏟 Venue (affects scores)
-    score1 = models.IntegerField()  # 🏏 Runs scored by Team 1
-    score2 = models.IntegerField()  # 🏏 Runs scored by Team 2
-    wickets1 = models.IntegerField()  # ⚾ Wickets lost by Team 1
-    wickets2 = models.IntegerField()  # ⚾ Wickets lost by Team 2
-    balls_left1 = models.IntegerField()  # 🎯 Balls remaining for Team 1
-    balls_left2 = models.IntegerField()  # 🎯 Balls remaining for Team 2
+    pre_score = models.IntegerField()  # 🏏 Runs scored by Team 1
+    bat_first = models.CharField(max_length=30,default='csk')  # 🏏 Runs scored by Team 2
+    wic_left = models.IntegerField()  # ⚾ Wickets lost by Team 1
+    balls_rem = models.IntegerField()  # ⚾ Wickets lost by Team 2
+    target = models.IntegerField()  # 🎯 Balls remaining for Team 1 # 🎯 Balls remaining for Team 2
     winner = models.CharField(max_length=100)  # 🏆 Winning team

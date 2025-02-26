@@ -96,7 +96,7 @@
 
     <div class="container">
         <h3>Enter Match Details</h3>
-        <form action="{% url 'predict_winner' %}" method="POST">
+        <form action="{% url 'predict_win' %}" method="POST">
             {% csrf_token %}
             
             <input type="hidden" name="batting_first" value="{{ batting_first }}">
@@ -106,7 +106,7 @@
             <select name="venue" id="venue" required>
                 <option value="">--Select Venue--</option>
                 <option value="Wankhede">Wankhede</option>
-                <option value="Chinnaswamy">Chinnaswamy</option>
+                <option value="chinnaswamy Stadium">chinnaswamy Stadium</option>
                 <option value="Eden Gardens">Eden Gardens</option>
                 <option value="Kotla">Kotla</option>
                 <option value="Chepauk">Chepauk</option>
@@ -124,6 +124,11 @@
             <label for="wickets_left">Wickets Left:</label>
             <input type="number" name="wickets_left" id="wickets_left" required>
             <br>
+
+            <label for="target">Target:</label>
+            <input type="number" name="target" id="target" required>
+            <br>
+
 
             <button type="submit">Predict Winner</button>
         </form>

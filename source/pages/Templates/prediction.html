@@ -19,7 +19,7 @@
             width: 100%;
             background: #333;
             padding: 10px 0;
-            text-align: center;
+            text-align: right;
         }
 
         .navbar a {
@@ -38,7 +38,7 @@
         width: 100%;
         background: #333;
         padding: 10px 0;
-        text-align: center;
+        text-align: right;
     }
 
     .navbar a {
@@ -188,11 +188,15 @@
 {% endif %}
 
 
+
 {% if show_batting_selection %}
+
 <div class="container">
     <h3>Overall Team Ratings(/5)</h3>
     <p><strong>{{ team1 }}</strong>: {{ team1_rating }}</p>
     <p><strong>{{ team2 }}</strong>: {{ team2_rating }}</p>
+</div>
+<div class="container">
     <p></p>
     <h3>Select Predicting Type</h3>
     <form action="{% url 'batting_selection' %}" method="POST">

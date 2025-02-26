@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect # type: ignore
 import random
-from .models import Player
+from pages.models import Player
 import joblib # type: ignore
 import numpy as np # type: ignore
-from .train1 import predict_match
+from pages.train1 import predict_match
 
 
 
@@ -150,7 +150,7 @@ def predict_target(request):
     return render(request, "result.html")
 
 
-def predict_winner(request):
+def predict_win(request):
     if request.method == "POST":
         team1 = request.POST.get("batting_first")
         team2 = request.POST.get("batting_second")
@@ -158,11 +158,23 @@ def predict_winner(request):
         present_score = int(request.POST["present_score"])
         wickets_left = int(request.POST["wickets_left"])
         balls_remaining = int(request.POST["balls_remaining"])
-
+        target=int(request.POST["target"])
+        bat_first=team1
         
         print("Batting First:", team1)
         print("Batting Second:", team2)
+        print("venue:",venue)
+        print("pre:",present_score)
+        print("wic:",wickets_left)
+        print("bal:",balls_remaining)
+        print("tar:",target)
+        print("Bat first:",bat_first)
 
-        prediction = predict_match(team1, team2, venue, present_score, wickets_left, balls_remaining)
+        
+        team1=team1.lower()
+        team2=team2.lower()
+        bat_first=bat_first.lower()
+
+        prediction = predict_match(team1, team2, venue, present_score, wickets_left, balls_remaining,bat_first,target)
         return render(request, "eee1.html", {"prediction": prediction})
     return render(request, "result1.html")
