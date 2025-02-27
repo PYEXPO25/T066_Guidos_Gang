@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/mi2.jpg'); /* Change to your actual image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 15px 0;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+        z-index: 1000;
+    }
+    
+    /* Navbar Links */
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 12px 18px;
+        display: inline-block;
+        transition: 0.3s ease-in-out;
+        border-radius: 5px;
+    }
+    
+    /* Hover Effect */
+    .navbar a:hover {
+        background: blue;
+        color: yellow;
+        box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
+    }
+        h1 {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<div class="navbar">
+    <a href="{% url 'home' %}">HOME</a>
+    <a href="#achievements">ACHIEVEMENTS</a>
+    <a href="#schedule">SCHEDULE</a>
+    <a href="{% url 'prediction_view' %}">PREDICTION</a>
+    <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+    <a href="{% url 'contact_us' %}">CONTACT US</a>
+    
 
-    </head>
-    <body>
-        <h1>gjbmbniohljthlktbn,bnm,bjhkruww</h1>
-    </body>
-
-
+</div>
+<body>
+    <h1>Welcome to My Improved Page</h1>
+</body>
 </html>

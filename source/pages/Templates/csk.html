@@ -1,43 +1,76 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: rgb(247, 247, 14);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: blue;
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chennai Super Kings</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, yellow, gold);
+            background-attachment: fixed;
+            color: blue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: rgb(15, 78, 225);
-                border: 8px solid black;
-                color: whitesmoke;
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO CSK</h1>
-            <img  class="a" src="/static/images/cskimg.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                The Chennai Super Kings (CSK), a premier franchise cricket team based in Chennai, Tamil Nadu, have been a dominant force in the Indian Premier League (IPL) since their inception in 2008. Owned by Chennai Super Kings Cricket Limited, the team has clinched five IPL titles to date. As of the 2025 season, CSK is captained by Ruturaj Gaikwad, who took over leadership from the legendary MS Dhoni in 2024. The squad boasts a blend of seasoned players and emerging talents, including stalwarts like Ravindra Jadeja, Shivam Dube, and Matheesha Pathirana. Under the guidance of head coach Stephen Fleming, CSK continues to uphold its legacy of excellence, with its home matches held at the iconic M. A. Chidambaram Stadium in Chennai. 
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid blue;
+            box-shadow: 0px 0px 10px black;
+        }
 
-            </p>
-            <a href="https://www.instagram.com/chennaiipl?igsh=MWcxMWc5ODBiMGxldw==">instagram</a>
-            
-        </center>
-    </body>
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(15, 78, 225, 0.9);
+            border: 5px solid black;
+            color: white;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: blue;
+            color: yellow;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: darkblue;
+            color: white;
+            box-shadow: 0px 0px 10px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO CHENNAI SUPER KINGS</h1>
+    <img class="team-image" src="{% static 'images/cskimg.webp' %}" alt="CSK Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        The Chennai Super Kings (CSK), a premier franchise cricket team based in Chennai, Tamil Nadu, have been a dominant force in the Indian Premier League (IPL) since their inception in 2008. Owned by Chennai Super Kings Cricket Limited, the team has clinched five IPL titles to date. As of the 2025 season, CSK is captained by Ruturaj Gaikwad, who took over leadership from the legendary MS Dhoni in 2024. The squad boasts a blend of seasoned players and emerging talents, including stalwarts like Ravindra Jadeja, Shivam Dube, and Matheesha Pathirana. Under the guidance of head coach Stephen Fleming, CSK continues to uphold its legacy of excellence, with its home matches held at the iconic M. A. Chidambaram Stadium in Chennai.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/chennaiipl?igsh=MWcxMWc5ODBiMGxldw==" target="_blank">Follow on Instagram</a>
+</body>
 </html>

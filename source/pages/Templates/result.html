@@ -16,24 +16,34 @@
     }
     
     .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: #333;
-        padding: 10px 0;
-        text-align: right;
-    }
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
 
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        padding: 14px 20px;
-        display: inline-block;
-    }
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 12px 18px;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+}
 
-    .navbar a:hover {
-        background: blue;
-    }
+.navbar a:hover {
+    background: blue;
+    color: yellow;
+    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
+}
+
 
     .container {
         background: white;
@@ -82,6 +92,7 @@
         <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
+        <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
     </div>
     <div class="container">
         <h3 style="color: rgb(10, 23, 10);">🏏 {{ batting_first }} will bat first.</h3>
@@ -95,12 +106,16 @@
 
             <label for="venue">Select Venue:</label>
             <select name="venue" id="venue" required>
-                <option value="">--Select Venue--</option>
-                <option value="Wankhede">Wankhede</option>
-                <option value="Chinnaswamy">Chinnaswamy</option>
+                <option value="Wankhede Stadium">Wankhede Stadium</option>
+                <option value="chinnaswamy Stadium">chinnaswamy Stadium</option>
                 <option value="Eden Gardens">Eden Gardens</option>
-                <option value="Kotla">Kotla</option>
-                <option value="Chepauk">Chepauk</option>
+                <option value="Arun Jaitley Stadium">Arun Jaitley Stadium</option>
+                <option value="MA Chidambaram Stadium ">MA Chidambaram Stadium </option>
+                <option value="Rajiv Gandhi International Stadium">Rajiv Gandhi International Stadium</option>
+                <option value="Sawai Mansingh Stadium">Sawai Mansingh Stadium</option>
+                <option value="Punjab Cricket Association Stadium">Punjab Cricket Association Stadium</option>
+                <option value="BRSABV Ekana Cricket Stadium">BRSABV Ekana Cricket Stadium</option>
+                <option value="Narendra Modi Stadium">Narendra Modi Stadium</option>
             </select>
             <br>
 
@@ -112,7 +127,7 @@
             <input type="number" name="balls_remaining" id="balls_remaining" required>
             <br>
 
-            <label for="wickets_left">Wickets Left:</label>
+            <label for="wickets_left">Wickets Gone:</label>
             <input type="number" name="wickets_left" id="wickets_left" required>
             <br>
 

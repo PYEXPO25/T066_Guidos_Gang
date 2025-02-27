@@ -154,5 +154,3 @@ def predict_match(team1, team2, venue, present_score, wickets_left, balls_remain
   # Convert back to team name
         print(predicted_winner)
         return f"Predicted Winner: {predicted_winner}"
-
-a=predict_match('rcb','mi','chinnaswamy Stadium',101,2,45,'mi',202)

@@ -29,27 +29,35 @@
             }
 
             /* Updated Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8); /* Slight transparency */
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-            }
+            .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-            display: inline-block;
-            font-weight: bold;
-            }
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 12px 18px;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+}
 
-        .navbar a:hover {
-            background: #0056b3; /* Better visibility */
-            }
+.navbar a:hover {
+    background: blue;
+    color: yellow;
+    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
+}
+
 
             /* Result Box Styling */
         .result-box {
@@ -104,6 +112,7 @@
         <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
+        <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
     </div>
 
     
@@ -115,6 +124,6 @@
     </div>
 
     <br>
-    <a href="{% url 'predict_win' %}" class="btn">Try Again</a>
+    <a href="{% url 'submit_players' %}" class="btn">Try Again</a>
 </body>
 </html>

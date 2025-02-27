@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pages.views import home,dc,csk,mi,srh,rcb,rr,kkr,gt,lsg,pbks,prediction_view,predict,select_teams,submit_players,batting_selection,predict_target,predict_win,contact_us
+from pages.views import home,dc,csk,mi,srh,rcb,rr,kkr,gt,lsg,pbks,prediction_view,predict,select_teams,submit_players,batting_selection,predict_target,predict_win,contact_us,overall_winner_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,4 +39,5 @@ urlpatterns = [
     path('predict_target/',predict_target, name='predict_target'),
     path('predict_win/',predict_win, name='predict_win'),
     path('contact_us/',contact_us, name='contact_us'),
+    path('overall_winner_view/',overall_winner_view,name='overall_winner_view'),
 ]

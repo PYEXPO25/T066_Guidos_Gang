@@ -1,42 +1,76 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: rgb(4, 4, 68);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: white;
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Capitals</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, navy, royalblue);
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: rgb(4, 4, 172);
-                border: 8px solid black;
-                color: whitesmoke;
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO DC</h1>
-            <img  class="a" src="/static/images/dcimg.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                Established in 2008 as the Delhi Daredevils, the franchise rebranded to Delhi Capitals in December 2018. The team plays its home matches at the Arun Jaitley Stadium in Delhi. Over the years, Delhi Capitals have seen a mix of performances, with a notable appearance in the IPL final in 2020, where they finished as runners-up. In the 2024 season, under the leadership of captain Rishabh Pant and head coach Ricky Ponting, the team aimed to clinch their maiden IPL title. The squad boasted a blend of experienced international players like David Warner and emerging domestic talents such as Yash Dhull. Strategic acquisitions during the 2024 auction, including England's Harry Brook and Australia's Jhye Richardson, were intended to bolster both the batting and bowling departments. Despite these efforts, the team faced challenges and couldn't progress beyond the group stage in the 2024 season. 
-            </p>
-            <a href="https://www.instagram.com/delhicapitals?igsh=eXI3a2RsMHZ5YXV0">instagram</a>
-            
-        </center>
-    </body>
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(4, 4, 172, 0.9);
+            border: 5px solid black;
+            color: white;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: royalblue;
+            color: yellow;
+            box-shadow: 0px 0px 10px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO DELHI CAPITALS</h1>
+    <img class="team-image" src="{% static 'images/dcimg.webp' %}" alt="Delhi Capitals Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        Established in 2008 as the Delhi Daredevils, the franchise rebranded to Delhi Capitals in December 2018. The team plays its home matches at the Arun Jaitley Stadium in Delhi. Over the years, Delhi Capitals have seen a mix of performances, with a notable appearance in the IPL final in 2020, where they finished as runners-up. In the 2024 season, under the leadership of captain Rishabh Pant and head coach Ricky Ponting, the team aimed to clinch their maiden IPL title. The squad boasted a blend of experienced international players like David Warner and emerging domestic talents such as Yash Dhull. Strategic acquisitions during the 2024 auction, including England's Harry Brook and Australia's Jhye Richardson, were intended to bolster both the batting and bowling departments. Despite these efforts, the team faced challenges and couldn't progress beyond the group stage in the 2024 season.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/delhicapitals?igsh=eXI3a2RsMHZ5YXV0" target="_blank">Follow on Instagram</a>
+</body>
 </html>

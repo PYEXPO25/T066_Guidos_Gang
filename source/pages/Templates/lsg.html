@@ -1,42 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: rgb(3, 3, 100);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: white;
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucknow Super Giants</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, rgb(3, 3, 100), rgb(0, 0, 60));
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: rgb(4, 4, 172);
-                border: 8px solid black;
-                color: whitesmoke;
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO LSG</h1>
-            <img  class="a" src="/static/images/lsgimg.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                The Lucknow Super Giants (LSG) are a prominent cricket franchise based in Lucknow, Uttar Pradesh, competing in the Indian Premier League (IPL). Established in 2021, LSG is owned by the RPSG Group and plays its home matches at the Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium. In their inaugural seasons, the team reached the playoffs in both 2022 and 2023. As of the 2025 season, Rishabh Pant has taken over as captain, succeeding KL Rahul, with Justin Langer continuing as head coach. The current squad features a blend of experienced players and emerging talents, including Nicholas Pooran, Ravi Bishnoi, Mayank Yadav, Ayush Badoni, and Mohsin Khan. With this dynamic lineup, LSG aims to make a significant impact in the upcoming IPL season.
-            </p>
-            <a href="https://www.instagram.com/lucknowsupergiants?igsh=MW41MzQ2eHFoN2h2dA==">instagram</a>
-            
-        </center>
-    </body>
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            box-shadow: 0px 0px 10px white;
+        }
+
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(4, 4, 172, 0.8);
+            border: 5px solid black;
+            color: whitesmoke;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 0px 10px white;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO LUCKNOW SUPER GIANTS</h1>
+    <img class="team-image" src="{% static 'images/lsgimg.webp' %}" alt="Lucknow Super Giants Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        The Lucknow Super Giants (LSG) are a prominent cricket franchise based in Lucknow, Uttar Pradesh, competing in the Indian Premier League (IPL). Established in 2021, LSG is owned by the RPSG Group and plays its home matches at the Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium. In their inaugural seasons, the team reached the playoffs in both 2022 and 2023. As of the 2025 season, Rishabh Pant has taken over as captain, succeeding KL Rahul, with Justin Langer continuing as head coach. The current squad features a blend of experienced players and emerging talents, including Nicholas Pooran, Ravi Bishnoi, Mayank Yadav, Ayush Badoni, and Mohsin Khan. With this dynamic lineup, LSG aims to make a significant impact in the upcoming IPL season.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/lucknowsupergiants?igsh=MW41MzQ2eHFoN2h2dA==" target="_blank">Follow on Instagram</a>
+</body>
 </html>

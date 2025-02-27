@@ -1,42 +1,76 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: lightblue;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: rgb(8, 8, 91);
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gujarat Titans</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, navy, lightskyblue);
+            background-attachment: fixed;
+            color: darkblue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: lightskyblue;
-                border: 8px solid black;
-                color: rgb(4, 4, 105);
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO GT</h1>
-            <img  class="a" src="/static/images/gtimg.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                The Gujarat Titans (GT) are a prominent cricket franchise based in Ahmedabad, Gujarat, competing in the Indian Premier League (IPL). Established in 2021, the team made a remarkable debut in the 2022 season by clinching the IPL championship title. Owned by Irelia Sports India Private Limited, a subsidiary of CVC Capital Partners, the Titans play their home matches at the Narendra Modi Stadium, the world's largest cricket venue. As of the 2025 season, the team is captained by Shubman Gill and coached by Ashish Nehra. In the 2025 IPL auction, GT made significant acquisitions, including star pacers Kagiso Rabada and Mohammed Siraj, as well as explosive English batsman Jos Buttler, signaling their intent to build a formidable squad. 
-            </p>
-            <a href="https://www.instagram.com/gujarat_titans?igsh=MXhwam5qdWExenp3Nw==">instagram</a>
-            
-        </center>
-    </body>
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(135, 206, 250, 0.9);
+            border: 5px solid black;
+            color: darkblue;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: lightskyblue;
+            color: navy;
+            box-shadow: 0px 0px 10px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO GUJARAT TITANS</h1>
+    <img class="team-image" src="{% static 'images/gtimg.webp' %}" alt="Gujarat Titans Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        The Gujarat Titans (GT) are a prominent cricket franchise based in Ahmedabad, Gujarat, competing in the Indian Premier League (IPL). Established in 2021, the team made a remarkable debut in the 2022 season by clinching the IPL championship title. Owned by Irelia Sports India Private Limited, a subsidiary of CVC Capital Partners, the Titans play their home matches at the Narendra Modi Stadium, the world's largest cricket venue. As of the 2025 season, the team is captained by Shubman Gill and coached by Ashish Nehra. In the 2025 IPL auction, GT made significant acquisitions, including star pacers Kagiso Rabada and Mohammed Siraj, as well as explosive English batsman Jos Buttler, signaling their intent to build a formidable squad.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/gujarat_titans?igsh=MXhwam5qdWExenp3Nw==" target="_blank">Follow on Instagram</a>
+</body>
 </html>

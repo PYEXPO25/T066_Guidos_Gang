@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect # type: ignore
 import random
-from pages.models import Player
+from pages.models import Player,Ipl_matches
 import joblib # type: ignore
 import numpy as np # type: ignore
 from pages.train1 import predict_match
-
+from django.db.models import Count
+from django.shortcuts import render
 
 
 def home(request):
@@ -216,3 +217,23 @@ def predict_win(request):
         prediction = predict_match(team1, team2, venue, present_score, wickets_left, balls_remaining,bat_first,target)
         return render(request, "eee1.html", {"prediction": prediction})
     return render(request, "result1.html")
+
+
+
+
+def get_top_winners():
+    winners = Ipl_matches.objects.values('predicted_winner').annotate(wins=Count('predicted_winner')).order_by('-wins')[:3]
+    
+    result = []
+    for i, winner in enumerate(winners, start=1):
+        output = f"{i}️⃣ Place: {winner['predicted_winner']}, Wins: {winner['wins']}"
+        print(output)  # Print the result
+        result.append(output)  # Store in list
+
+    return result  # Return the list of results
+
+
+
+def overall_winner_view(request):
+    overall_winner = get_top_winners()
+    return render(request, "overall_predict.html", {"winner": overall_winner})

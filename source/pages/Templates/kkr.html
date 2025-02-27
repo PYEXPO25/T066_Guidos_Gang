@@ -1,42 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: rgb(33, 4, 60);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: white;
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolkata Knight Riders</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, rgb(33, 4, 60), rgb(20, 3, 40));
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: blueviolet;
-                border: 8px solid black;
-                color: white;
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO KKR</h1>
-            <img  class="a" src="/static/images/kkrIMG.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                The Kolkata Knight Riders (KKR) are a prominent franchise cricket team representing Kolkata, West Bengal, in the Indian Premier League (IPL). Established in 2008, the team is co-owned by Bollywood actor Shah Rukh Khan, actress Juhi Chawla, and her spouse Jay Mehta. KKR has secured three IPL titles, triumphing in 2012, 2014, and most recently in 2024. The team's home ground is the iconic Eden Gardens, which boasts a seating capacity of 68,000 spectators. As of the 2025 season, KKR is captained by Shreyas Iyer and coached by Chandrakant Pandit. The squad features a blend of seasoned players and emerging talents, including notable names like Rinku Singh, Quinton de Kock, Venkatesh Iyer, and Andre Russell. With a compact roster of 21 players, KKR aims to defend their title in the upcoming season, combining continuity with fresh talent.
-            </p>
-            <a href="https://www.instagram.com/kkriders?igsh=OGl0cWFqcDM1ZGEx">instagram</a>
-            
-        </center>
-    </body>
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            box-shadow: 0px 0px 10px white;
+        }
+
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(138, 43, 226, 0.9);
+            border: 5px solid black;
+            color: white;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: #8a2be2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #5a189a;
+            box-shadow: 0px 0px 10px white;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO KOLKATA KNIGHT RIDERS</h1>
+    <img class="team-image" src="{% static 'images/kkrIMG.webp' %}" alt="Kolkata Knight Riders Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        The Kolkata Knight Riders (KKR) are a prominent franchise cricket team representing Kolkata, West Bengal, in the Indian Premier League (IPL). Established in 2008, the team is co-owned by Bollywood actor Shah Rukh Khan, actress Juhi Chawla, and her spouse Jay Mehta. KKR has secured three IPL titles, triumphing in 2012, 2014, and most recently in 2024. The team's home ground is the iconic Eden Gardens, which boasts a seating capacity of 68,000 spectators. As of the 2025 season, KKR is captained by Shreyas Iyer and coached by Chandrakant Pandit. The squad features a blend of seasoned players and emerging talents, including notable names like Rinku Singh, Quinton de Kock, Venkatesh Iyer, and Andre Russell. With a compact roster of 21 players, KKR aims to defend their title in the upcoming season, combining continuity with fresh talent.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/kkriders?igsh=OGl0cWFqcDM1ZGEx" target="_blank">Follow on Instagram</a>
+</body>
 </html>

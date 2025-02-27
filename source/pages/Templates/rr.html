@@ -1,43 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: rgb(212, 45, 101);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: white;
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajasthan Royals</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, rgb(212, 45, 101), rgb(150, 20, 70));
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: plum;
-                border: 8px solid black;
-                color: blue;
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO RR</h1>
-            <img  class="a" src="/static/images/rrimg.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                The Rajasthan Royals (RR) are a professional cricket franchise based in Jaipur, Rajasthan, competing in the Indian Premier League (IPL). Established in 2008 as one of the original eight IPL teams, they achieved immediate success by winning the inaugural championship under the leadership of Shane Warne. Known for identifying and nurturing emerging talent, RR has a reputation for unearthing high-potential players. As of the 2025 season, the team is captained by Sanju Samson and coached by Rahul Dravid, with home matches held at the Sawai Mansingh Stadium in Jaipur. The current squad features a blend of seasoned internationals and promising domestic players, including Nitish Rana, Shimron Hetmyer, and Yashasvi Jaiswal. Despite facing challenges over the years, RR remains a competitive force in the IPL, aiming to replicate their early success in upcoming seasons. 
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            box-shadow: 0px 0px 10px white;
+        }
 
-            </p>
-            <a href="https://www.instagram.com/rajasthanroyals?igsh=MTd2c21zamU2M2Q0bA==">instagram</a>
-            
-        </center>
-    </body>
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(221, 160, 221, 0.8);
+            border: 5px solid black;
+            color: blue;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: #ff007f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #d9006c;
+            box-shadow: 0px 0px 10px white;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO RAJASTHAN ROYALS</h1>
+    <img class="team-image" src="{% static 'images/rrimg.webp' %}" alt="Rajasthan Royals Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        The Rajasthan Royals (RR) are a professional cricket franchise based in Jaipur, Rajasthan, competing in the Indian Premier League (IPL). Established in 2008 as one of the original eight IPL teams, they achieved immediate success by winning the inaugural championship under the leadership of Shane Warne. Known for identifying and nurturing emerging talent, RR has a reputation for unearthing high-potential players. As of the 2025 season, the team is captained by Sanju Samson and coached by Rahul Dravid, with home matches held at the Sawai Mansingh Stadium in Jaipur. The current squad features a blend of seasoned internationals and promising domestic players, including Nitish Rana, Shimron Hetmyer, and Yashasvi Jaiswal. Despite facing challenges over the years, RR remains a competitive force in the IPL, aiming to replicate their early success in upcoming seasons.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/rajasthanroyals?igsh=MTd2c21zamU2M2Q0bA==" target="_blank">Follow on Instagram</a>
+</body>
 </html>

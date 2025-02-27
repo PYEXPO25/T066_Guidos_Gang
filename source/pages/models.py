@@ -40,3 +40,10 @@ class Predict_win(models.Model):
     balls_rem = models.IntegerField()  # ⚾ Wickets lost by Team 2
     target = models.IntegerField()  # 🎯 Balls remaining for Team 1 # 🎯 Balls remaining for Team 2
     winner = models.CharField(max_length=100)  # 🏆 Winning team
+
+class Ipl_matches(models.Model):
+    team1 = models.CharField(max_length=100)
+    team2 = models.CharField(max_length=100)
+    venue = models.CharField(max_length=100)
+    date = models.DateField()
+    predicted_winner = models.CharField(max_length=100, null=True, blank=True)  # Stores predicted winner

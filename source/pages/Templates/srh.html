@@ -1,42 +1,76 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <style>
-            body {
-                background-color: orangered;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                color: white;
-                
-              
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrisers Hyderabad</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, orangered, darkorange);
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-            }
-            .a {
-                width: 90vh;
-                height: 90vh;
-            }
-            p {
-                font-size: 30px;
-                background-color: orange;
-                border: 8px solid black;
-                color: black;
-            }
-            
-        </style>
-    </head>
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px black;
+        }
 
-    <body>
-        <center>
-            <h1>WELCOME TO SRH</h1>
-            <img  class="a" src="/static/images/srhimg.webp">
-            <h1>DESCRIPTION</h1>
-            <p class="b">
-                The Sunrisers Hyderabad (SRH) are a professional cricket franchise based in Hyderabad, Telangana, competing in the Indian Premier League (IPL). Established in 2012 after the termination of the Deccan Chargers, the team is owned by Kalanithi Maran of the Sun TV Network. SRH's home ground is the Rajiv Gandhi International Cricket Stadium, which has a capacity of 39,000 spectators. The team clinched their maiden IPL title in 2016 and were runners-up in 2018 and 2024. As of the 2025 season, SRH is captained by Pat Cummins and coached by Daniel Vettori. The squad boasts a mix of experienced players and emerging talents, including Ishan Kishan, Abhishek Sharma, and Travis Head. Known for their strong performances, SRH aims to build on their previous successes in the upcoming season.
-            </p>
-            <a href="https://www.instagram.com/sunrisershyd?igsh=Z3AzdHJjcGF3MHc5">instagram</a>
-            
-        </center>
-    </body>
+        .team-image {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid black;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        .description-box {
+            font-size: 20px;
+            background-color: rgba(255, 140, 0, 0.9);
+            border: 5px solid black;
+            color: black;
+            padding: 20px;
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            text-align: justify;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: black;
+            color: orange;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: darkorange;
+            color: black;
+            box-shadow: 0px 0px 10px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO SUNRISERS HYDERABAD</h1>
+    <img class="team-image" src="{% static 'images/srhimg.webp' %}" alt="SRH Logo">
+    
+    <h1>DESCRIPTION</h1>
+    <p class="description-box">
+        The Sunrisers Hyderabad (SRH) are a professional cricket franchise based in Hyderabad, Telangana, competing in the Indian Premier League (IPL). Established in 2012 after the termination of the Deccan Chargers, the team is owned by Kalanithi Maran of the Sun TV Network. SRH's home ground is the Rajiv Gandhi International Cricket Stadium, which has a capacity of 39,000 spectators. The team clinched their maiden IPL title in 2016 and were runners-up in 2018 and 2024. As of the 2025 season, SRH is captained by Pat Cummins and coached by Daniel Vettori. The squad boasts a mix of experienced players and emerging talents, including Ishan Kishan, Abhishek Sharma, and Travis Head. Known for their strong performances, SRH aims to build on their previous successes in the upcoming season.
+    </p>
+
+    <a class="social-link" href="https://www.instagram.com/sunrisershyd?igsh=Z3AzdHJjcGF3MHc5" target="_blank">Follow on Instagram</a>
+</body>
 </html>
