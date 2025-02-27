@@ -10,12 +10,50 @@ from pages.train1 import predict_match
 def home(request):
     return render(request, 'home.html')
 
+def dc(request):
+    return render(request, 'dc.html')
+
+def csk(request):
+    return render(request, 'csk.html')
+
+def gt(request):
+    return render(request, 'gt.html')
+
+
+def kkr(request):
+    return render(request, 'kkr.html')
+
+
+def lsg(request):
+    return render(request, 'lsg.html')
+
+
+def mi(request):
+    return render(request, 'mi.html')
+
+
+def pbks(request):
+    return render(request, 'pbks.html')
+
+
+def rcb(request):
+    return render(request, 'rcb.html')
+
+def rr(request):
+    return render(request, 'rr.html')
+
+def srh(request):
+    return render(request, 'srh.html')
+
 def prediction_view(request):
     return render(request, 'prediction.html')
 
 def predict(request):
     # Your prediction logic here
     return render(request, 'result.html')
+def contact_us(request):
+    return render(request, 'contact_us.html')
+
 
 def select_teams(request):
     """Handles team selection and shows available players."""

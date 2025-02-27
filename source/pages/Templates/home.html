@@ -13,6 +13,11 @@
             scroll-behavior: smooth;
             background-color: gray;
             background-image: url('static/images/mi2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            
+
         }
 
         .navbar {
@@ -20,7 +25,7 @@
             top: 0;
             width: 100%;
             background: #333;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: right;
         }
 
@@ -34,10 +39,14 @@
         .navbar a:hover {
             background: blue;
         }
+        .navbar ::after{
+            position: absolute;
+
+        }
 
         .section {
             height: 100vh;
-            padding: 3px;
+            padding: 60px;
             text-align: center;
             color: aliceblue;
             
@@ -169,7 +178,7 @@
         }
 
         .wave-container1 {
-            justify-content: right;
+            justify-content:right;
             margin-top: -10px;
         }
 
@@ -181,11 +190,14 @@
         }
 
         .wave-bar1 {
-            background-color: #f8066f;
+            background-color: #f8066f; 
+            
+
         }
 
         .wave-bar2 {
             background-color: #0ae841;
+            
         }
 
         /* Wave effect */
@@ -200,7 +212,9 @@
         .wave-bar1:nth-child(4), .wave-bar2:nth-child(4) { animation-delay: 0.6s; }
         .wave-bar1:nth-child(5), .wave-bar2:nth-child(5) { animation-delay: 0.8s; }
 
-
+    audio {
+        display: none;
+    }  
         
     </style>
 </head>
@@ -211,6 +225,9 @@
         <a href="#achievements">ACHIEVEMENTS</a>
         <a href="#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
+        <a href="{% url 'contact_us' %}">CONTACT US</a>
+        
+
     </div>
     
     <div class="wave-container">
@@ -233,8 +250,9 @@
     <div id="home" class="section">
         <h1>IPL 2025 WINNERS PREDICTION</h1>
         <h2> WELCOME TO IPL PREDICTION </h2>
-        <img  class="dc" src="/static/images/DCoutline.png"> <img  class="gt" src="/static/images/GToutline.png"> <img  class="kkr" src="/static/images/KKRoutline.png"> <img  class="lsg" src="/static/images/LSGoutline.png"> <img  class="mi" src="/static/images/MIoutline.png"> <img  class="pbk" src="/static/images/PBKSoutline.png"> <img  class="rcb" src="/static/images/RCBoutline.png"> 
-        <img  class="rr" src="/static/images/RRoutline.png"> <img  class="srh" src="/static/images/SRHoutline.png"> <img  class="csk" src="/static/images/CSKoutline.png"> 
+        <a href="{% url 'dc' %}"> <img  class="dc" src="/static/images/DCoutline.png"> </a><a href="{% url 'gt' %}"><img  class="gt" src="/static/images/GToutline.png"> </a> <a href="{% url 'kkr' %}"><img  class="kkr" src="/static/images/KKRoutline.png"> </a> <a href="{% url 'lsg' %}"><img  class="lsg" src="/static/images/LSGoutline.png"></a> <a href="{% url 'mi' %}"> <img  class="mi" src="/static/images/MIoutline.png"> </a> <a href="{% url 'pbks' %}"><img  class="pbk" src="/static/images/PBKSoutline.png"></a> <a href="{% url 'rcb' %}"><img  class="rcb" src="/static/images/RCBoutline.png"> </a>
+        <a href="{% url 'rr' %}"><img  class="rr" src="/static/images/RRoutline.png"> </a> <a href="{% url 'srh' %}"><img  class="srh" src="/static/images/SRHoutline.png"></a> <a href="{% url 'csk' %}"><img  class="csk" src="/static/images/CSKoutline.png"> </a>
+       
     </div>
 
     <div id="achievements" class="section">
@@ -727,9 +745,7 @@
                 <td>Eden Gardens, Kolkata</td>
                 <td>7:30 PM</td>
             </tr>
-        </div>
-        
-          
+    
 
     </body>
 </html>

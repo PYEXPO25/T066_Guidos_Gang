@@ -16,11 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pages.views import home,prediction_view,predict,select_teams,submit_players,batting_selection,predict_target,predict_win
+from pages.views import home,dc,csk,mi,srh,rcb,rr,kkr,gt,lsg,pbks,prediction_view,predict,select_teams,submit_players,batting_selection,predict_target,predict_win,contact_us
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('dc/',dc,name='dc'),
+    path('csk/',csk,name='csk'),
+    path('gt/',gt,name='gt'),
+    path('kkr/',kkr,name='kkr'),
+    path('lsg/',lsg,name='lsg'),
+    path('mi/',mi,name='mi'),
+    path('pbks/',pbks,name='pbks'),
+    path('rcb/',rcb,name='rcb'),
+    path('rr/',rr,name='rr'),
+    path('srh/',srh,name='srh'),
     path('prediction_view/',prediction_view, name='prediction_view'),
     path('predict/',predict, name='predict'),
     path('select_teams/',select_teams, name='select_teams'),
@@ -28,4 +38,5 @@ urlpatterns = [
     path('batting_selection/',batting_selection, name='batting_selection'),
     path('predict_target/',predict_target, name='predict_target'),
     path('predict_win/',predict_win, name='predict_win'),
+    path('contact_us/',contact_us, name='contact_us'),
 ]
