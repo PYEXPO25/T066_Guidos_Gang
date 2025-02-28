@@ -220,20 +220,32 @@ def predict_win(request):
 
 
 
-
 def get_top_winners():
-    winners = Ipl_matches.objects.values('predicted_winner').annotate(wins=Count('predicted_winner')).order_by('-wins')[:3]
-    
+    winners = (
+        Ipl_matches.objects.values('predicted_winner')
+        .annotate(wins=Count('predicted_winner'))
+        .order_by('-wins')[:3]
+    )
+
+    reasons = {
+        "Mumbai Indians": "Strong middle-order, experienced bowlers, and match-winning performances.",
+        "Chennai Super Kings": "Consistent leadership, all-rounders, and ability to chase well.",
+        "Royal Challengers Bangalore": "Powerful batting lineup and improved bowling attack.",
+        "Kolkata Knight Riders": "Aggressive openers, mystery spinners, and sharp fielding.",
+        "Rajasthan Royals": "Young talents, great captaincy, and game-changing performances.",
+        "Punjab Kings": "Explosive batting order but lacked consistency in past seasons.",
+        "Delhi Capitals": "A balanced squad with a mix of youth and experience.",
+        "Sunrisers Hyderabad": "Best bowling attack and strong opening partnerships."
+    }
+
     result = []
     for i, winner in enumerate(winners, start=1):
-        output = f"{i}️⃣ Place: {winner['predicted_winner']}, Wins: {winner['wins']}"
-        print(output)  # Print the result
-        result.append(output)  # Store in list
+        team_name = winner["predicted_winner"]
+        reason = reasons.get(team_name, "Excellent team performance throughout the season.")
+        result.append({"place": i, "team": team_name, "wins": winner["wins"], "reason": reason})
 
-    return result  # Return the list of results
-
-
+    return result
 
 def overall_winner_view(request):
-    overall_winner = get_top_winners()
-    return render(request, "overall_predict.html", {"winner": overall_winner})
+    overall_winners = get_top_winners()
+    return render(request, "overall_predict.html", {"winners": overall_winners})

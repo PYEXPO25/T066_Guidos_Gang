@@ -1,5 +1,4 @@
-<style>
-    /* Full-page Background */
+<style>    /* Full-page Background */
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -12,6 +11,7 @@
         justify-content: center;
         min-height: 100vh;
         color: white;
+        font-size: 1.4rem; /* Increased base font size */
     }
     
     /* Overlay Effect */
@@ -34,7 +34,7 @@
         width: 100%;
         background: rgba(0, 0, 0, 0.85);
         backdrop-filter: blur(8px);
-        padding: 15px 0;
+        padding: 20px 0; /* Increased padding */
         text-align: center;
         box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
         z-index: 1000;
@@ -44,9 +44,9 @@
     .navbar a {
         color: white;
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1.1rem; /* Increased font size */
         font-weight: 600;
-        padding: 12px 18px;
+        padding: 15px 22px; /* Increased padding */
         display: inline-block;
         transition: 0.3s ease-in-out;
         border-radius: 5px;
@@ -63,18 +63,18 @@
     @media (max-width: 768px) {
         .navbar {
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
         }
     
         .navbar a {
-            font-size: 1rem;
-            padding: 10px 15px;
+            font-size: 1.2rem; /* Adjusted for smaller screens */
+            padding: 12px 18px;
         }
     }
     
     /* Winner Section */
     .winner-title {
-        font-size: 2.5rem;
+        font-size: 3rem; /* Increased font size */
         font-weight: bold;
         color: #FFD700; /* Gold color */
         text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
@@ -85,21 +85,21 @@
     
     /* Winner Text */
     .winner-text {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Increased font size */
         font-weight: 600;
         color: #ffcc00;
-        text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6);
+        text-shadow: 2px 2px 10px rgba(6, 3, 3, 0.6);
         text-align: center;
     }
     
     /* Winner Highlight */
     .winner-highlight {
-        font-size: 2rem;
+        font-size: 2.2rem; /* Increased font size */
         font-weight: bold;
-        text-align: center;
+        text-align: left;
         color: blue;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 5px 15px;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 10px 20px; /* Increased padding */
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
         transition: transform 0.3s ease-in-out;
@@ -109,8 +109,59 @@
         transform: scale(1.1);
         box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
     }
-    </style>
     
+    /* Winner Details */
+    #winner-details {
+        background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+        padding: 25px; /* Increased padding */
+        margin-top: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.5);
+        max-width: 900px; /* Increased width */
+        text-align: left;
+        font-size: 1.5rem; /* Increased font size */
+        line-height: 1.8; /* Adjusted line height */
+        transition: all 0.5s ease-in-out;
+    }
+    
+    /* Winner Section Title */
+    #winner-details p {
+        color: #ffcc00;
+        font-weight: 500;
+    }
+    
+    /* Highlighted Ratings */
+    #winner-details strong {
+        color: cyan;
+        text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.8);
+    }
+    
+    /* Know More Button */
+    button {
+        background: linear-gradient(45deg, #ffcc00, #ff6600);
+        color: black;
+        font-size: 1.5rem; /* Increased font size */
+        font-weight: bold;
+        padding: 15px 25px; /* Increased padding */
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    button:hover {
+        background: linear-gradient(45deg, #ff9900, #ff3300);
+        color: white;
+        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.6);
+        transform: scale(1.1);
+    }
+    
+    /* Hidden class */
+    .hidden {
+        display: none;
+    }
+</style>    
     <!-- Navbar -->
     <div class="navbar">
         <a href="{% url 'home' %}">HOME</a>
@@ -118,9 +169,36 @@
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
         <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+        <a href="{% url 'contact_us' %}">CONTACT US</a>
     </div>
     
     <!-- Winner Section -->
-    <h2 class="winner-title">Overall Predicted Winner</h2>
-    <p class="winner-text">The predicted IPL 2025 winner is: <strong class="winner-highlight">{{ winner }}</strong></p>
+    <h2>🏆 IPL Overall Winners Prediction 🏆</h2>
+
+
+    {% if winners %}
+    <p><strong>🥇 1st Place:</strong> {{ winners.0.team }} ({{ winners.0.wins }} Wins)</p>
+    <p><strong>Analysis:</strong> CSK has a balanced squad and has completely dominated the league in past years.</p>
     
+    <button onclick="showDetails()">Know More</button>  
+
+    <div id="winner-details" class="hidden">
+        <p>Let's discuss it deeper,</p>
+        <p><strong>Opening Rating:</strong> 9/10 - The openers Ruturaj Gaikwad and Devon Conway have done a great job for CSK in the past. They are solid defensive batters who know when to accelerate.</p>
+        <p><strong>Middle Order:</strong> 8/10 - The middle order of CSK is very balanced, allowing them to adapt to different situations.</p>
+        <p><strong>Lower Order:</strong> 9/10 - Experienced players like MS Dhoni and Ravindra Jadeja provide stability and can handle any situation.</p>
+        <p><strong>Bowling:</strong> 9/10 - CSK has one of the best bowling attacks with a perfect mix of spin (Ravichandran Ashwin, Ravindra Jadeja, Noor Ahmed) and improved pace bowlers.</p>
+        <p><strong>Conclusion:</strong> CSK has a well-balanced squad, and if they operate efficiently, they will be a dominant force in the tournament.</p>
+    </div>
+{% else %}
+    <p>No predictions available yet.</p>
+{% endif %}
+
+<script>
+    function showDetails() {
+        document.getElementById("winner-details").classList.remove("hidden"); // Show details when button is clicked
+    }
+</script>
+
+
+

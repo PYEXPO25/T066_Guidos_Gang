@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improved Page</title>
+    <title>Contact Us - IPL Predictor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,59 +14,159 @@
             background-position: center;
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             color: white;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             text-align: center;
         }
+
+        /* Navbar */
         .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(8px);
-        padding: 15px 0;
-        text-align: center;
-        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-        z-index: 1000;
-    }
-    
-    /* Navbar Links */
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: 600;
-        padding: 12px 18px;
-        display: inline-block;
-        transition: 0.3s ease-in-out;
-        border-radius: 5px;
-    }
-    
-    /* Hover Effect */
-    .navbar a:hover {
-        background: blue;
-        color: yellow;
-        box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
-    }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 12px 18px;
+            display: inline-block;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background: blue;
+            color: yellow;
+            box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
+        }
+
+        /* Contact Container */
+        /* Contact Container */
+.contact-container {
+    background: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Contact Info Styling */
+.contact-info {
+    font-size: 1.3rem; /* Slightly bigger */
+    font-weight: bold; /* Make it bold */
+    line-height: 1.8;
+    background: rgba(255, 255, 255, 0.2); /* Light semi-transparent background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    color: white; /* Ensure text is white */
+}
+
         h1 {
             font-size: 2.5rem;
+            margin-bottom: 250px;
         }
+
+        .contact-info {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* WhatsApp Section */
+        .whatsapp-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .whatsapp-section a {
+            display: inline-block;
+            background: green;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .whatsapp-section a:hover {
+            background: darkgreen;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.6);
+        }
+        .instagram-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.instagram-section a {
+    display: inline-block;
+    background: #E1306C; /* Instagram pinkish color */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.instagram-section a:hover {
+    background: #C13584; /* Darker Instagram color */
+    box-shadow: 0px 0px 10px rgba(225, 48, 108, 0.6);
+}
     </style>
 </head>
+<body>
+
 <div class="navbar">
     <a href="{% url 'home' %}">HOME</a>
     <a href="#achievements">ACHIEVEMENTS</a>
     <a href="#schedule">SCHEDULE</a>
     <a href="{% url 'prediction_view' %}">PREDICTION</a>
-    <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+    <a href="{% url 'overall_winner_view' %}">OVERALL PREDICTION</a>
     <a href="{% url 'contact_us' %}">CONTACT US</a>
-    
-
 </div>
-<body>
-    <h1>Welcome to My Improved Page</h1>
+
+<div class="contact-container">
+    <h1>We’d love to hear from you! 🎤</h1>
+    <p class="contact-info">
+        📞 <strong>Phone:</strong> +91 6374043272  
+        <br>📧 <strong>Email:</strong> guidosgangt066@gmail.com  
+        <br>📢 <strong>Support Hours:</strong>  
+        <br>Monday – Friday: 10:00 AM – 6:00 PM  
+        <br>Weekends: Only if there’s no live match! 😉  
+    </p>
+
+    <div class="whatsapp-section">
+        <h2>📢 Join Our WhatsApp Group!</h2>
+        <p>Get instant updates, discuss predictions & stay ahead of the game!</p>
+        <a href="https://chat.whatsapp.com/GsKriHaGO5nDNFJew7QO8Z" target="_blank">👉 Click Here to Join</a>
+    </div>
+    <div class="instagram-section">
+        <h2>📸 Follow Us on Instagram!</h2>
+        <p>Stay updated with the latest project insights, IPL predictions & behind-the-scenes fun!</p>
+        <a href="https://www.instagram.com/guidos_gang?utm_source=qr&igsh=NWlrMXVzZWJuMWpk" target="_blank">👉 Follow Us on Instagram</a>
+    </div>
+    
+</div>
+
 </body>
 </html>

@@ -96,6 +96,7 @@
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
         <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+        <a href="{% url 'contact_us' %}">CONTACT US</a>
     </div>
     <div class="container">
         <h3>🏏 Match Prediction Result</h3>
@@ -106,7 +107,7 @@
         <p><strong>Wickets Left:</strong> {{ wickets_left }}</p>
         <h3 style="color: rgb(12, 15, 12);">Predicted Target {{ predicted_target }}</h3>
         <br>
-        <a href="{% url 'predict_target' %}">
+        <a href="{% url 'prediction_view' %}">
             <button>Predict Again</button>
         </a>
     </div>
