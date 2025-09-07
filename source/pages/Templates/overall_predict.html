@@ -1,204 +1,253 @@
-<style>    /* Full-page Background */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url('/static/images/mi2.jpg') no-repeat center center fixed;
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        color: white;
-        font-size: 1.4rem; /* Increased base font size */
-    }
-    
-    /* Overlay Effect */
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6); /* Dark overlay */
-        z-index: -1;
-    }
-    
-    /* Navbar */
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(8px);
-        padding: 20px 0; /* Increased padding */
-        text-align: center;
-        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-        z-index: 1000;
-    }
-    
-    /* Navbar Links */
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.1rem; /* Increased font size */
-        font-weight: 600;
-        padding: 15px 22px; /* Increased padding */
-        display: inline-block;
-        transition: 0.3s ease-in-out;
-        border-radius: 5px;
-    }
-    
-    /* Hover Effect */
-    .navbar a:hover {
-        background: blue;
-        color: yellow;
-        box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
-    }
-    
-    /* Responsive Navbar */
-    @media (max-width: 768px) {
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overall Match Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background-color: gray;
+            background-image: url('/static/images/cri.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
         .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: auto;
+            background: linear-gradient(270deg, #000000, #111144, #000000);
+            background-size: 600% 600%;
+            animation: navbarGradient 10s ease infinite;
+            backdrop-filter: blur(10px);
             text-align: center;
             padding: 15px 0;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
         }
-    
+
+        @keyframes navbarGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .navbar a {
-            font-size: 1.2rem; /* Adjusted for smaller screens */
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.6rem;
             padding: 12px 18px;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+            position: relative;
         }
-    }
-    
-    /* Winner Section */
-    .winner-title {
-        font-size: 3rem; /* Increased font size */
-        font-weight: bold;
-        color: #FFD700; /* Gold color */
-        text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
-        text-align: center;
-        margin-top: 100px;
-        animation: pulse 2s infinite;
-    }
-    
-    /* Winner Text */
-    .winner-text {
-        font-size: 2rem; /* Increased font size */
-        font-weight: 600;
-        color: #ffcc00;
-        text-shadow: 2px 2px 10px rgba(6, 3, 3, 0.6);
-        text-align: center;
-    }
-    
-    /* Winner Highlight */
-    .winner-highlight {
-        font-size: 2.2rem; /* Increased font size */
-        font-weight: bold;
-        text-align: left;
-        color: blue;
-        background: rgba(0, 0, 0, 0.2);
-        padding: 10px 20px; /* Increased padding */
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
-        transition: transform 0.3s ease-in-out;
-    }
-    
-    .winner-highlight:hover {
-        transform: scale(1.1);
-        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
-    }
-    
-    /* Winner Details */
-    #winner-details {
-        background: rgba(0, 0, 0, 0.8); /* Dark overlay */
-        padding: 25px; /* Increased padding */
-        margin-top: 20px;
-        border-radius: 15px;
-        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.5);
-        max-width: 900px; /* Increased width */
-        text-align: left;
-        font-size: 1.5rem; /* Increased font size */
-        line-height: 1.8; /* Adjusted line height */
-        transition: all 0.5s ease-in-out;
-    }
-    
-    /* Winner Section Title */
-    #winner-details p {
-        color: #ffcc00;
-        font-weight: 500;
-    }
-    
-    /* Highlighted Ratings */
-    #winner-details strong {
-        color: cyan;
-        text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.8);
-    }
-    
-    /* Know More Button */
-    button {
-        background: linear-gradient(45deg, #ffcc00, #ff6600);
-        color: black;
-        font-size: 1.5rem; /* Increased font size */
-        font-weight: bold;
-        padding: 15px 25px; /* Increased padding */
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.4);
-        transition: all 0.3s ease-in-out;
-    }
-    
-    button:hover {
-        background: linear-gradient(45deg, #ff9900, #ff3300);
-        color: white;
-        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.6);
-        transform: scale(1.1);
-    }
-    
-    /* Hidden class */
-    .hidden {
-        display: none;
-    }
-</style>    
-    <!-- Navbar -->
+
+        .navbar a:hover {
+            background-color: blue;
+            color: yellow;
+            box-shadow: 0 0 12px rgba(0, 0, 255, 0.6);
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 0;
+            bottom: -4px;
+            background: yellow;
+            transition: 0.4s ease-in-out;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-top: 110px;
+            text-shadow: 3px 3px 15px rgba(255, 215, 0, 0.9);
+            animation: shimmer 2.5s infinite;
+            text-align: center;
+        }
+
+        @keyframes shimmer {
+            0% { text-shadow: 0 0 10px #FFD700; }
+            50% { text-shadow: 0 0 25px #ffec8b; }
+            100% { text-shadow: 0 0 10px #FFD700; }
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 90%;
+            background-image: url('/static/main.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            margin-top: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+            color: #151718;
+        }
+
+        .match-row select {
+            padding: 6px;
+            font-size: 14px;
+            border-radius: 4px;
+            width: 18%;
+            border: 1px solid #888;
+        }
+
+        .submit-button {
+            background-color: #111311;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #0f1210;
+            box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .column-names {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .column-names div {
+            width: 18%;
+        }
+
+        @media (max-width: 768px) {
+            .navbar a {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                margin-top: 180px;
+            }
+
+            .match-row,
+            .column-names {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .match-row select,
+            .column-names div {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="navbar">
         <a href="{% url 'home' %}">HOME</a>
-        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'predict_player' %}">AI</a>
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
-        <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+        <a href="{% url 'overall_winner' %}">OVERALL PREDICTION</a>
         <a href="{% url 'contact_us' %}">CONTACT US</a>
     </div>
-    
-    <!-- Winner Section -->
-    <h2>🏆 IPL Overall Winners Prediction 🏆</h2>
 
+    <h1>🏏 Overall Match Prediction (10 Matches)</h1>
 
-    {% if winners %}
-    <p><strong>🥇 1st Place:</strong> {{ winners.0.team }} ({{ winners.0.wins }} Wins)</p>
-    <p><strong>Analysis:</strong> CSK has a balanced squad and has completely dominated the league in past years.</p>
-    
-    <button onclick="showDetails()">Know More</button>  
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
 
-    <div id="winner-details" class="hidden">
-        <p>Let's discuss it deeper,</p>
-        <p><strong>Opening Rating:</strong> 9/10 - The openers Ruturaj Gaikwad and Devon Conway have done a great job for CSK in the past. They are solid defensive batters who know when to accelerate.</p>
-        <p><strong>Middle Order:</strong> 8/10 - The middle order of CSK is very balanced, allowing them to adapt to different situations.</p>
-        <p><strong>Lower Order:</strong> 9/10 - Experienced players like MS Dhoni and Ravindra Jadeja provide stability and can handle any situation.</p>
-        <p><strong>Bowling:</strong> 9/10 - CSK has one of the best bowling attacks with a perfect mix of spin (Ravichandran Ashwin, Ravindra Jadeja, Noor Ahmed) and improved pace bowlers.</p>
-        <p><strong>Conclusion:</strong> CSK has a well-balanced squad, and if they operate efficiently, they will be a dominant force in the tournament.</p>
+            <div class="column-names">
+                <div>Team 1</div>
+                <div>Team 2</div>
+                <div>Venue</div>
+                <div>Pitch Type</div>
+                <div>Winner</div>
+            </div>
+
+            {% for match in match_defaults %}
+                <div class="match-row">
+                    <select name="team1_{{ match.match_number }}">
+                        {% for team in teams %}
+                            <option value="{{ team }}" {% if team == match.team1 %}selected{% endif %}>{{ team }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="team2_{{ match.match_number }}">
+                        {% for team in teams %}
+                            <option value="{{ team }}" {% if team == match.team2 %}selected{% endif %}>{{ team }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="venue_{{ match.match_number }}">
+                        {% for v in venues %}
+                            <option value="{{ v }}" {% if v == match.venue %}selected{% endif %}>{{ v }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="pitch_type_{{ match.match_number }}">
+                        {% for pt in pitch_types %}
+                            <option value="{{ pt }}" {% if pt == match.pitch_type %}selected{% endif %}>{{ pt }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="predicted_winner_{{ match.match_number }}">
+                        <option value="{{ match.team1 }}" {% if match.predicted_winner == match.team1 %}selected{% endif %}>{{ match.team1 }}</option>
+                        <option value="{{ match.team2 }}" {% if match.predicted_winner == match.team2 %}selected{% endif %}>{{ match.team2 }}</option>
+                    </select>
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="submit-button">Submit Predictions</button>
+        </form>
     </div>
-{% else %}
-    <p>No predictions available yet.</p>
-{% endif %}
-
-<script>
-    function showDetails() {
-        document.getElementById("winner-details").classList.remove("hidden"); // Show details when button is clicked
-    }
-</script>
-
-
-
+</body>
+</html>

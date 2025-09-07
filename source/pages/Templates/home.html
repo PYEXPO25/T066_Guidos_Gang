@@ -5,209 +5,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPL Team Achievements</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-            background-color: gray;
-            background-image: url('static/images/mi2.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: gray;
+        background-image: url('static/images/cri.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        
+    }
 
-        }
-
-        /* Navbar Styling */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-    backdrop-filter: blur(8px);
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    z-index: 1000;
-}
-
-/* Navbar Links */
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 12px 18px;
-    display: inline-block;
-    transition: 0.3s ease-in-out;
-    border-radius: 5px;
-}
-
-/* Hover Effect */
-.navbar a:hover {
-    background: blue;
-    color: yellow;
-    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
-}
-
-/* Responsive Navbar */
-@media (max-width: 768px) {
+    /* Navbar */
     .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 7%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
         text-align: center;
-        padding: 10px 0;
+        padding: 20px 0;
+        z-index: 9999;
+        animation: slideDown 0.8s ease-out;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    
     }
 
     .navbar a {
-        font-size: 1rem;
-        padding: 10px 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.6rem;
+        padding: 10px 20px;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+        position: relative;
     }
+
+    .navbar a:hover {
+        background-color: blue;
+        color: yellow;
+        box-shadow: 0 0 12px rgba(0, 0, 255, 0.6);
+    }
+
+    .navbar a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        left: 0;
+        bottom: -4px;
+        background: yellow;
+        transition: 0.4s ease-in-out;
+    }
+
+    .navbar a:hover::after {
+        width: 100%;
+    }
+
+    @keyframes slideDown {
+        0% { transform: translateY(-100%); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Headings */
+    #home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 140px 20px 80px;
+        background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), rgba(0, 0, 100, 0.4));
+        animation: fadeIn 2s ease-in-out;
+        border-radius: 0 0 20px 20px;
+        box-shadow: inset 0 -1px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    #home h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #FFD700;
+        margin-bottom: 15px;
+        text-shadow: 3px 3px 15px rgba(255, 215, 0, 0.9);
+        animation: shimmer 2.5s infinite;
+    }
+
+    #home h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: white;
+        animation: fadeInUp 2s ease forwards;
+        margin-top: 0;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shimmer {
+        0% { text-shadow: 0 0 10px #FFD700; }
+        50% { text-shadow: 0 0 25px #ffec8b; }
+        100% { text-shadow: 0 0 10px #FFD700; }
+    }
+
+    .section {
+        padding: 100px 20px;
+        background: rgba(14, 18, 90, 0.65);
+        backdrop-filter: blur(5px);
+        border-radius: 15px;
+        margin: 30px;
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        animation: fadeIn 2s ease;
+    }
+
+    .team-logo {
+        width: 170px;
+        height: 170px;
+        margin: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .team-logo img {
+        width: 80%;
+        border-radius: 15px;
+        transition: transform 0.3s;
+    }
+
+    .team-logo:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+
+    .team-logo:hover img {
+        transform: rotate(2deg) scale(1.05);
+    }
+
+    /* Table */
+    table {
+        width: 90%;
+        margin: 40px auto;
+        border-collapse: collapse;
+        overflow: hidden;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1.5s ease-in;
+    }
+
+    th {
+        background: linear-gradient(90deg, #1b045a, #4b0082);
+        color: white;
+        padding: 16px;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 14px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(6, 6, 82, 0.9);
+        color: white;
+    }
+
+    tr:nth-child(odd) {
+        background-color: rgba(0, 0, 255, 0.8);
+        color: white;
+    }
+
+    /* Team background classes */
+    .csk { background-color: yellow; }
+    .dc { background-color: brown; }
+    .gt { background-color: lightblue; }
+    .kkr { background-color: purple; }
+    .lsg { background-color: navy; }
+    .mi { background-color: blue; }
+    .pbk { background-color: orangered; }
+    .rcb { background-color: darkred; }
+    .rr { background-color: plum; }
+    .srh { background-color: #b45609; }
+
+    /* Wave animation */
+    .wave-container, .wave-container1 {
+        display: flex;
+        gap: 5px;
+        margin-top: 100px;
+    }
+
+    .wave-container1 {
+        justify-content: flex-end;
+        margin-top: -10px;
+    }
+
+    .wave-bar1, .wave-bar2 {
+        width: 10px;
+        height: 10px;
+        animation: wave 1s infinite ease-in-out;
+    }
+
+    .wave-bar1 { background-color: #f80616; }
+    .wave-bar2 { background-color: #5e85d3; }
+
+    @keyframes wave {
+        0%, 100% { transform: scaleY(0.5); }
+        50% { transform: scaleY(1.5); }
+    }
+
+    .wave-bar1:nth-child(1), .wave-bar2:nth-child(1) { animation-delay: 0s; }
+    .wave-bar1:nth-child(2), .wave-bar2:nth-child(2) { animation-delay: 0.2s; }
+    .wave-bar1:nth-child(3), .wave-bar2:nth-child(3) { animation-delay: 0.4s; }
+    .wave-bar1:nth-child(4), .wave-bar2:nth-child(4) { animation-delay: 0.6s; }
+    .wave-bar1:nth-child(5), .wave-bar2:nth-child(5) { animation-delay: 0.8s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .navbar a {
+            font-size: 1rem;
+            padding: 10px;
+        }
+
+        #home h1 { font-size: 2.5rem; }
+        #home h2 { font-size: 1.4rem; }
+
+        .team-logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .team-logo img {
+            width: 90%;
+        }
+    }
+
+    .fade-in-title {
+    font-weight: 800;
+    font-size: 36px;
+    animation: fadeInDown 1s ease-in-out;
 }
 
-
-        /* Improved Section Styling */
-        .section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: row; /* Ensures horizontal alignment */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 80px 20px;
-    color: aliceblue;
-    background: rgba(0, 0, 0, 0.6); /* Dark transparent overlay */
-    backdrop-filter: blur(5px);
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
-    animation: fadeInUp 1.5s ease-in-out;
-    gap: 20px; /* Adds spacing between images */
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-}
-
-/* Ensure images align properly */
-.section img {
-    display: inline-block; /* Prevents block stacking */
-    width: 150px; /* Adjust as needed */
-    height: auto;
-    margin: 10px;
-}
-
-
-        /* Home Section Styling */
-        #home {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,255,0.5));
-            border-radius: 10px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
- 
-
-        /* Fade-In Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Stylish Heading */
-        #home h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #FFD700;
-            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
-            animation: pulse 2s infinite;
-        }
-
-        #home h2 {
-            flex-direction:column;
-            font-size: 2rem;
-            position: top;
-            font-weight: 600;
-            color: #ffffff;
-            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6);
-        }
-
-        /* Glow Effect Animation */
-        @keyframes pulse {
-            0% { text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8); }
-            50% { text-shadow: 2px 2px 20px rgba(255, 215, 0, 1); }
-            100% { text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8); }
-        }
-
-        /* Team Logos */
-        #home a img {
-            width: 150px;
-            height: 150px;
-            margin: 10px;
-            border-radius: 50%;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        
-
-        #home a img:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            #home h1 {
-                font-size: 2.2rem;
-            }
-
-            #home h2 {
-                font-size: 1.6rem;
-            }
-
-            #home a img {
-                width: 120px;
-                height: 120px;
-            }
-        }
-
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-        }
-
-        table {
-    width: 90%;
+.fade-in-text {
+    font-size: 18px;
     margin: 20px auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1.5s ease-in-out;
+    max-width: 800px;
+    animation: fadeInUp 1.5s ease-in-out;
 }
 
-@keyframes fadeIn {
+/* Button animation */
+.animated-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Keyframes */
+@keyframes fadeInDown {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -215,159 +303,26 @@
     }
 }
 
-th, td {
-    padding: 15px;
-    text-align: center;
-    font-size: 16px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-
-th {
-    background: linear-gradient(45deg, #1b045a, #4b0082);
-    color: white;
-    font-size: 18px;
-    text-transform: uppercase;
-}
-
-tr:nth-child(even) {
-    background-color: rgba(6, 6, 82, 0.9);
-    color: white;
-}
-
-tr:nth-child(odd) {
-    background-color: rgba(0, 0, 255, 0.8);
-    color: white;
-}
-
-tr:hover {
-    background-color: rgb(250, 9, 9);
-    color: rgb(0, 0, 0);
-    transition: 0.3s ease-in-out;
-}
-
-/* Add a subtle border-radius to first and last rows */
-tr:first-child th {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-tr:last-child td {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-        
-    
-        .csk {
-            height: 200px;
-            width: 200px;
-            background-color: yellow;
-        }
-        .dc {
-            height: 200px;
-            width: 200px;
-
-            background-color: brown;
-        }
-        .gt {
-            height: 200px;
-            width: 200px;
-            background-color: lightblue;
-
-        }
-        .kkr {
-            height: 200px;
-            width: 200px;
-            background-color: purple;
-
-        }
-        .lsg {
-            height: 200px;
-            width: 200px;
-            background-color: rgb(10, 10, 109);
-
-        }
-        .mi {
-            height: 200px;
-            width: 200px;
-            background-color: blue;
-
-        }
-        .pbk {
-            height: 200px;
-            width: 200px;
-            background-color: orangered;
-
-        }
-        .rcb {
-            height: 200px;
-            width: 200px;
-            background-color: darkred;
-        }
-        .rr {
-            height: 200px;
-            width: 200px;
-            background-color: plum;
-
-        }
-        .srh {
-            height: 200px;
-            width: 200px;
-            background-color: rgb(180, 86, 9);
-
-        }
-        /* Wave animation */
-        .wave-container, .wave-container1 {
-            display: flex;
-            gap: 5px;
-            margin-top: 100px;
-        }
-
-        .wave-container1 {
-            justify-content:right;
-            margin-top: -10px;
-        }
-
-
-        .wave-bar1, .wave-bar2 {
-            width: 10px;
-            height: 10px;
-            animation: wave 1s infinite ease-in-out;
-        }
-
-        .wave-bar1 {
-            background-color: #f8066f; 
-            
-
-        }
-
-        .wave-bar2 {
-            background-color: #0ae841;
-            
-        }
-
-        /* Wave effect */
-        @keyframes wave {
-            0%, 100% { transform: scaleY(0.5); }
-            50% { transform: scaleY(1.5); }
-        }
-
-        .wave-bar1:nth-child(1), .wave-bar2:nth-child(1) { animation-delay: 0s; }
-        .wave-bar1:nth-child(2), .wave-bar2:nth-child(2) { animation-delay: 0.2s; }
-        .wave-bar1:nth-child(3), .wave-bar2:nth-child(3) { animation-delay: 0.4s; }
-        .wave-bar1:nth-child(4), .wave-bar2:nth-child(4) { animation-delay: 0.6s; }
-        .wave-bar1:nth-child(5), .wave-bar2:nth-child(5) { animation-delay: 0.8s; }
-
-        
-    </style>
+</style>
 </head>
 <body>
     
     <div class="navbar">
         <a href="#home">HOME</a>
-        <a href="#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'predict_player' %}">AI</a>
         <a href="#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
-        <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+        <a href="{% url 'overall_winner'%}">OVERALL PREDICTION</a>
         <a href="{% url 'contact_us' %}">CONTACT US</a>
         
 
@@ -390,79 +345,41 @@ tr:last-child td {
     </div>
     
 
-    <div id="home" class="section">
-        <h1>IPL 2025 WINNERS PREDICTION</h1>
-        <h2> WELCOME TO IPL PREDICTION </h2>
-        <a href="{% url 'dc' %}"> <img  class="dc" src="/static/images/DCoutline.png"> </a><a href="{% url 'gt' %}"><img  class="gt" src="/static/images/GToutline.png"> </a> <a href="{% url 'kkr' %}"><img  class="kkr" src="/static/images/KKRoutline.png"> </a> <a href="{% url 'lsg' %}"><img  class="lsg" src="/static/images/LSGoutline.png"></a> <a href="{% url 'mi' %}"> <img  class="mi" src="/static/images/MIoutline.png"> </a> <a href="{% url 'pbks' %}"><img  class="pbk" src="/static/images/PBKSoutline.png"></a> <a href="{% url 'rcb' %}"><img  class="rcb" src="/static/images/RCBoutline.png"> </a>
-        <a href="{% url 'rr' %}"><img  class="rr" src="/static/images/RRoutline.png"> </a> <a href="{% url 'srh' %}"><img  class="srh" src="/static/images/SRHoutline.png"></a> <a href="{% url 'csk' %}"><img  class="csk" src="/static/images/CSKoutline.png"> </a>
-       
-    </div>
+<div id="home" class="section">
+<h1 style="color: #FFD700; text-align: center; font-size: 3rem; margin-bottom: 40px;">
+    IPL 2025 WINNERS PREDICTION
+</h1>
+<h2 style="color: white; text-align: center; font-weight: 500; margin-top: 0; margin-bottom: 100px;">
+    WELCOME TO IPL PREDICTION
+</h2>
 
-    <div id="achievements" class="section">
-        <h2>🏅 IPL Team Achievements</h2>
-        <table>
-            <tr>
-                <th>Team</th>
-                <th>Titles</th>
-                <th>Notable Achievements</th>
-            </tr>
-            <tr>
-                <td>Chennai Super Kings (CSK)</td>
-                <td>5</td>
-                <td>Most Playoff Appearances (12), Highest Score: 246/5</td>
-            </tr>
-            <tr>
-                <td>Mumbai Indians (MI)</td>
-                <td>5</td>
-                <td>Most Wins (140+), Biggest Win Margin (146 runs)</td>
-            </tr>
-            <tr>
-                <td>Kolkata Knight Riders (KKR)</td>
-                <td>2</td>
-                <td>Longest Winning Streak (14 matches)</td>
-            </tr>
-            <tr>
-                <td>Rajasthan Royals (RR)</td>
-                <td>1</td>
-                <td>First IPL Champions (2008)</td>
-            </tr>
-            <tr>
-                <td>Sunrisers Hyderabad (SRH)</td>
-                <td>1</td>
-                <td>Highest Score: 277/3</td>
-            </tr>
-            <tr>
-                <td>Gujarat Titans (GT)</td>
-                <td>1</td>
-                <td>First IPL Champions (2022)</td>
-            </tr>
-            <tr>
-                <td>Royal Challengers Bangalore (RCB)</td>
-                <td>0</td>
-                <td>Highest IPL Score (263/3)</td>
-            </tr>
-            <tr>
-                <td>Delhi Capitals (DC)</td>
-                <td>0</td>
-                <td>Runner-up (2020)</td>
-            </tr>
-            <tr>
-                <td>Punjab Kings (PBKS)</td>
-                <td>0</td>
-                <td>Best Finish: Runner-up (2014)</td>
-            </tr>
-            <tr>
-                <td>Lucknow Super Giants (LSG)</td>
-                <td>0</td>
-                <td>First Year Entered Play-offs</td>
-            </tr>
-        </table>
-    </div>
 
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <a href="{% url 'dc' %}"><img class="team-logo" src="/static/images/DCoutline.png"></a>
+        <a href="{% url 'gt' %}"><img class="team-logo" src="/static/images/GToutline.png"></a>
+        <a href="{% url 'kkr' %}"><img class="team-logo" src="/static/images/KKRoutline.png"></a>
+        <a href="{% url 'lsg' %}"><img class="team-logo" src="/static/images/LSGoutline.png"></a>
+        <a href="{% url 'mi' %}"><img class="team-logo" src="/static/images/MIoutline.png"></a>
+        <a href="{% url 'pbks' %}"><img class="team-logo" src="/static/images/PBKSoutline.png"></a>
+        <a href="{% url 'rcb' %}"><img class="team-logo" src="/static/images/RCBoutline.png"></a>
+        <a href="{% url 'rr' %}"><img class="team-logo" src="/static/images/RRoutline.png"></a>
+        <a href="{% url 'srh' %}"><img class="team-logo" src="/static/images/SRHoutline.png"></a>
+        <a href="{% url 'csk' %}"><img class="team-logo" src="/static/images/CSKoutline.png"></a>
+    </div>
+</div>
+<div id="predict-player" class="section" style="text-align: center; padding: 60px 20px; color: white;">
+    <h2 class="fade-in-title">🔮 AI-Powered Player Prediction — You Control the Inputs!</h2>
+    <p class="fade-in-text">
+        Want to see how a player would perform under your match conditions? Use our AI-powered prediction tool! Input custom data like strike rate, wickets, venue, pitch type, and get smart predictions based on real match models.
+    </p>
+    <a href="{% url 'predict_player' %}" class="animated-button">
+        🎯 Start Predicting Now
+    </a>
+</div>
     <div id="schedule" class="section">
 
         <table>
-            <h1>IPL 2025 Match Schedule</h1>
+            <h2 style="color: white; text-align: center; font-weight: 800; margin-top: 0; margin-bottom: 100px;">IPL 2025 Match Schedule</h2>
              
             <tr>
                 <th>Date</th>

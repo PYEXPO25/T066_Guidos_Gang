@@ -5,67 +5,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunrisers Hyderabad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, orangered, darkorange);
-            background-attachment: fixed;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, orangered, darkorange);
+            color: white;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 40px;
-            text-shadow: 2px 2px 5px black;
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #fff4e5;
+            text-shadow: 2px 2px 8px #000;
+            animation: fadeDown 1s ease-out;
+        }
+
+        .legacy-section {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: rgba(255, 200, 120, 0.9);
+            border-left: 5px solid black;
+            border-radius: 10px;
+            padding: 20px 25px;
+            box-shadow: 0 0 12px black;
+            animation: fadeUp 1.2s ease-out;
+            color: #000;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #3b1c00;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 1px 1px 5px #fff;
+        }
+
+        .legacy-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .legacy-list li::before {
+            content: "🔥 ";
+            margin-right: 8px;
+            color: #ff4500;
         }
 
         .team-image {
-            width: 80%;
+            display: block;
+            margin: 0 auto 30px;
+            width: 85%;
             max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-            border: 5px solid black;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            border: 4px solid black;
+            box-shadow: 0 0 15px black;
+            animation: zoomIn 1.3s ease-out;
         }
 
         .description-box {
-            font-size: 20px;
-            background-color: rgba(255, 140, 0, 0.9);
-            border: 5px solid black;
-            color: black;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #fff4e5;
             padding: 20px;
-            max-width: 80%;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f8f8f8;
             text-align: justify;
+            box-shadow: 0 0 10px #000;
+            backdrop-filter: blur(5px);
+            animation: fadeUp 1.5s ease-out;
         }
 
         .social-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 20px;
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            font-size: 18px;
+            padding: 12px 28px;
             text-decoration: none;
-            background-color: black;
+            background: black;
             color: orange;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 0 15px black;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
         }
 
         .social-link:hover {
-            background-color: darkorange;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px black;
+            background-color: orange;
             color: black;
-            box-shadow: 0px 0px 10px black;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <h1>WELCOME TO SUNRISERS HYDERABAD</h1>
+
+    <div class="legacy-section">
+        <h2>TEAM LEGACY</h2>
+        <ul class="legacy-list">
+            <li>IPL Champions – 2016</li>
+            <li>Runners-up – 2018, 2024</li>
+            <li>Playoff Appearances – 6 times (2013–2020)</li>
+            <li>Feared Bowling Units – known for economy and low-score defenses</li>
+            <li>Home Fortress – Rajiv Gandhi International Stadium, 39,000 capacity</li>
+        </ul>
+    </div>
+
     <img class="team-image" src="{% static 'images/srhimg.webp' %}" alt="SRH Logo">
-    
+
     <h1>DESCRIPTION</h1>
     <p class="description-box">
         The Sunrisers Hyderabad (SRH) are a professional cricket franchise based in Hyderabad, Telangana, competing in the Indian Premier League (IPL). Established in 2012 after the termination of the Deccan Chargers, the team is owned by Kalanithi Maran of the Sun TV Network. SRH's home ground is the Rajiv Gandhi International Cricket Stadium, which has a capacity of 39,000 spectators. The team clinched their maiden IPL title in 2016 and were runners-up in 2018 and 2024. As of the 2025 season, SRH is captained by Pat Cummins and coached by Daniel Vettori. The squad boasts a mix of experienced players and emerging talents, including Ishan Kishan, Abhishek Sharma, and Travis Head. Known for their strong performances, SRH aims to build on their previous successes in the upcoming season.

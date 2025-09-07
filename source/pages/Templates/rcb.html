@@ -4,72 +4,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Challengers Bengaluru</title>
+    <title>Royal Challengers Bangalore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, rgb(120, 0, 0), rgb(50, 0, 0));
-            background-attachment: fixed;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom right, #3a0d0d, #800000);
+            color: white;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 40px;
-            text-shadow: 2px 2px 5px black;
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 8px #000;
+            animation: fadeDown 1s ease-out;
+        }
+
+        .legacy-section {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: rgba(60, 0, 0, 0.7);
+            border-left: 5px solid #ffcc00;
+            border-radius: 10px;
+            padding: 20px 25px;
+            box-shadow: 0 0 12px #000;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        .legacy-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .legacy-list li::before {
+            content: "🔥 ";
+            margin-right: 8px;
+            color: #ffcc00;
         }
 
         .team-image {
-            width: 80%;
+            display: block;
+            margin: 0 auto 30px;
+            width: 85%;
             max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-            border: 5px solid white;
-            box-shadow: 0px 0px 10px white;
+            border-radius: 12px;
+            border: 4px solid #ffcc00;
+            box-shadow: 0 0 15px #ffcc00;
+            animation: zoomIn 1.3s ease-out;
         }
 
         .description-box {
-            font-size: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 5px solid red;
-            color: white;
+            background-color: rgba(50, 0, 0, 0.8);
+            border: 2px solid #ffcc00;
             padding: 20px;
-            max-width: 80%;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f0f0f0;
             text-align: justify;
+            box-shadow: 0 0 10px #000;
+            backdrop-filter: blur(5px);
+            animation: fadeUp 1.5s ease-out;
         }
 
         .social-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 20px;
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            font-size: 18px;
+            padding: 12px 28px;
             text-decoration: none;
-            background-color: red;
+            background: linear-gradient(to right, #ffcc00, #ff0000);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 0 15px #ffcc00;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
         }
 
         .social-link:hover {
-            background-color: darkred;
-            box-shadow: 0px 0px 10px white;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ffcc00;
+        }
+
+        @keyframes fadeDown {
+            from {opacity: 0; transform: translateY(-30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
         }
     </style>
 </head>
 <body>
-    <h1>WELCOME TO ROYAL CHALLENGERS BENGALURU</h1>
+    <h1>WELCOME TO ROYAL CHALLENGERS BANGALORE</h1>
+
+    <div class="legacy-section">
+        <h2>TEAM LEGACY</h2>
+        <ul class="legacy-list">
+            <li>🏆 3-time Finalists (2009, 2011, 2016)</li>
+            <li>💥 Most 200+ totals in IPL history</li>
+            <li>🔥 Home of legends: Virat Kohli, AB de Villiers, Chris Gayle</li>
+            <li>🔴 Loyal fanbase: the "RCB Army"</li>
+            <li>📍 Iconic Venue: M. Chinnaswamy Stadium</li>
+        </ul>
+    </div>
+
     <img class="team-image" src="{% static 'images/rcbimg.webp' %}" alt="RCB Logo">
-    
+
     <h1>DESCRIPTION</h1>
     <p class="description-box">
-        The Royal Challengers Bengaluru (RCB) are a prominent franchise cricket team based in Bengaluru, Karnataka, competing in the Indian Premier League (IPL). Established in 2008 by United Spirits and named after the company's liquor brand, Royal Challenge, RCB has yet to secure an IPL title despite reaching the finals three times between 2009 and 2016. As of the 2025 season, the team is captained by Rajat Patidar, who succeeded Faf du Plessis, and coached by Andy Flower. RCB's home ground is the M. Chinnaswamy Stadium, known for its enthusiastic fan base. The 2025 squad features a blend of seasoned players and new talents, including Virat Kohli, Liam Livingstone, Phil Salt, and Jitesh Sharma. With strategic acquisitions and leadership changes, RCB aims to clinch their maiden IPL title in the upcoming season.
+        Royal Challengers Bangalore (RCB), one of the most iconic teams in the Indian Premier League (IPL), represents the vibrant city of Bengaluru. Despite not securing a title yet, RCB has featured some of cricket's biggest legends like Virat Kohli, AB de Villiers, and Chris Gayle. Known for their aggressive gameplay and massive fan following, the team has reached the finals three times and has produced numerous unforgettable performances. Playing their home games at the M. Chinnaswamy Stadium, RCB continues to be a powerhouse in the league, always aiming to clinch their maiden IPL title.
     </p>
 
-    <a class="social-link" href="https://www.instagram.com/royalchallengers.bengaluru?igsh=MTZzNGs5MTk2enQwbQ==" target="_blank">Follow on Instagram</a>
+    <a class="social-link" href="https://www.instagram.com/royalchallengersbangalore/" target="_blank">
+        Follow on Instagram
+    </a>
 </body>
 </html>

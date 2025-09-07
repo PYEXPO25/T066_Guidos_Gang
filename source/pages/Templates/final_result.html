@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overall Match Results</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: #2f2f2f;
+        background-image: url('/static/images/cri.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 15px 0;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+        z-index: 1000;
+        animation: slideDown 0.7s ease-in-out;
+    }
+
+    .navbar a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 12px 18px;
+        margin: 0 6px;
+        display: inline-block;
+        transition: 0.3s ease-in-out;
+        border-radius: 6px;
+    }
+
+    .navbar a:hover {
+        background: royalblue;
+        color: yellow;
+        box-shadow: 0 0 12px rgba(0, 0, 255, 0.6);
+    }
+
+    .container {
+        max-width: 900px;
+        margin-top: 120px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 35px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        background-image: url('/static/main.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-align: center;
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    h1 {
+        color: #222;
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 14px;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .highlight {
+        margin-top: 25px;
+        background-color: rgba(255, 255, 255, 0.95);
+        color: darkgreen;
+        font-size: 1.6rem;
+        font-weight: bold;
+        padding: 18px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 128, 0, 0.2);
+    }
+
+    .win-count {
+        margin-top: 30px;
+        background-color: rgba(255, 255, 255, 0.92);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .win-count ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .win-count li {
+        padding: 8px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .tie-section {
+        margin-top: 25px;
+        font-size: 1.2rem;
+        color: #ff8c00;
+        font-weight: bold;
+        background-color: rgba(255, 255, 255, 0.88);
+        padding: 14px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(255, 140, 0, 0.2);
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    button {
+        background-color: #111;
+        color: #fff;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #333;
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+    }
+
+    .final-winner {
+        margin-top: 30px;
+        padding: 25px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: zoomIn 0.8s ease;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes zoomIn {
+        0% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .navbar a {
+            font-size: 1rem;
+            padding: 10px 14px;
+        }
+
+        .highlight {
+            font-size: 1.3rem;
+        }
+
+        .final-winner {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'overall_result' %}">Overall Result</a>
+    </div>
+
+    <div class="container">
+        <h1>🏆 Overall Match Results</h1>
+
+        {% if final_winner %}
+        <div class="final-winner">
+            <h2>🏁 Final Matchup Result</h2>
+            <div class="highlight">🥇 Final Winner after Tie-Breaker: {{ final_winner }}</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

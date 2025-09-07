@@ -5,72 +5,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delhi Capitals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, navy, royalblue);
-            background-attachment: fixed;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom right, #001f3f, #13589e);
+            color: white;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 40px;
-            text-shadow: 2px 2px 5px black;
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ff3c3c;
+            text-shadow: 2px 2px 8px #000;
+            animation: fadeDown 1s ease-out;
+        }
+
+        .legacy-section {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: rgba(0, 32, 64, 0.85);
+            border-left: 5px solid #ff3c3c;
+            border-radius: 10px;
+            padding: 20px 25px;
+            box-shadow: 0 0 12px #000;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #ff3c3c;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        .legacy-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .legacy-list li::before {
+            content: "⭐ ";
+            margin-right: 8px;
+            color: #ff3c3c;
         }
 
         .team-image {
-            width: 80%;
+            display: block;
+            margin: 0 auto 30px;
+            width: 85%;
             max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-            border: 5px solid white;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            border: 4px solid #ff3c3c;
+            box-shadow: 0 0 15px #ff3c3c;
+            animation: zoomIn 1.3s ease-out;
         }
 
         .description-box {
-            font-size: 20px;
-            background-color: rgba(4, 4, 172, 0.9);
-            border: 5px solid black;
-            color: white;
+            background-color: rgba(0, 0, 30, 0.8);
+            border: 2px solid #ff3c3c;
             padding: 20px;
-            max-width: 80%;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f0f0f0;
             text-align: justify;
+            box-shadow: 0 0 10px #000;
+            backdrop-filter: blur(5px);
+            animation: fadeUp 1.5s ease-out;
         }
 
         .social-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 20px;
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            font-size: 18px;
+            padding: 12px 28px;
             text-decoration: none;
-            background-color: darkblue;
+            background: linear-gradient(to right, #ff3c3c, #660000);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 0 15px #ff3c3c;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
         }
 
         .social-link:hover {
-            background-color: royalblue;
-            color: yellow;
-            box-shadow: 0px 0px 10px black;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff3c3c;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <h1>WELCOME TO DELHI CAPITALS</h1>
-    <img class="team-image" src="{% static 'images/dcimg.webp' %}" alt="Delhi Capitals Logo">
-    
+
+    <div class="legacy-section">
+        <h2>TEAM LEGACY</h2>
+        <ul class="legacy-list">
+            <li>🥈 Runner-up: <strong>2020</strong></li>
+            <li>🔥 Consistent Playoffs Qualifier (2019–2021)</li>
+            <li>⚡ Youth Power: <strong>Shreyas Iyer, Rishabh Pant, Prithvi Shaw</strong></li>
+            <li>🧠 Coached by Ricky Ponting</li>
+            <li>📍 Based in Delhi, Home Ground: Arun Jaitley Stadium</li>
+        </ul>
+    </div>
+
+    <img class="team-image" src="{% static 'images/dcIMG.webp' %}" alt="DC Logo">
+
     <h1>DESCRIPTION</h1>
     <p class="description-box">
-        Established in 2008 as the Delhi Daredevils, the franchise rebranded to Delhi Capitals in December 2018. The team plays its home matches at the Arun Jaitley Stadium in Delhi. Over the years, Delhi Capitals have seen a mix of performances, with a notable appearance in the IPL final in 2020, where they finished as runners-up. In the 2024 season, under the leadership of captain Rishabh Pant and head coach Ricky Ponting, the team aimed to clinch their maiden IPL title. The squad boasted a blend of experienced international players like David Warner and emerging domestic talents such as Yash Dhull. Strategic acquisitions during the 2024 auction, including England's Harry Brook and Australia's Jhye Richardson, were intended to bolster both the batting and bowling departments. Despite these efforts, the team faced challenges and couldn't progress beyond the group stage in the 2024 season.
+        Delhi Capitals (DC), formerly known as Delhi Daredevils, has evolved into one of the IPL's most promising franchises in recent years. With a strong emphasis on nurturing young talent, DC has featured dynamic players like Rishabh Pant, Shreyas Iyer, and Prithvi Shaw. Under the guidance of legendary coach Ricky Ponting, the team made it to the final in 2020 and was a consistent contender in the playoffs. The franchise represents India's capital and plays its home games at the Arun Jaitley Stadium. With a balanced squad and a hunger for success, DC continues to aim for their maiden IPL title.
     </p>
 
-    <a class="social-link" href="https://www.instagram.com/delhicapitals?igsh=eXI3a2RsMHZ5YXV0" target="_blank">Follow on Instagram</a>
+    <a class="social-link" href="https://www.instagram.com/delhicapitals/" target="_blank">Follow on Instagram</a>
 </body>
 </html>

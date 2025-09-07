@@ -10,7 +10,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-image: url('/static/images/mi2.jpg');
+            background-image: url('/static/images/cri.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -93,10 +93,10 @@
     </style>
     <div class="navbar">
         <a href="{% url 'home' %}">HOME</a>
-        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'predict_player' %}">AI</a>
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
-        <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+        <a href="{% url 'overall_winner'%}">OVERALL PREDICTION</a>
         <a href="{% url 'contact_us' %}">CONTACT US</a>
     </div>
 

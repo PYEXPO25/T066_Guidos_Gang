@@ -5,66 +5,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Punjab Kings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, rgb(100, 0, 0), rgb(50, 0, 0));
-            background-attachment: fixed;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom right, #640000, #320000);
+            color: white;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 40px;
-            text-shadow: 2px 2px 5px black;
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ffcb05;
+            text-shadow: 2px 2px 8px #000;
+            animation: fadeDown 1s ease-out;
+        }
+
+        .legacy-section {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: rgba(100, 0, 0, 0.85);
+            border-left: 5px solid #ffcb05;
+            border-radius: 10px;
+            padding: 20px 25px;
+            box-shadow: 0 0 12px #000;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #ffcb05;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        .legacy-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .legacy-list li::before {
+            content: "⭐ ";
+            margin-right: 8px;
+            color: #ffcb05;
         }
 
         .team-image {
-            width: 80%;
+            display: block;
+            margin: 0 auto 30px;
+            width: 85%;
             max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-            border: 5px solid white;
-            box-shadow: 0px 0px 10px white;
+            border-radius: 12px;
+            border: 4px solid #ffcb05;
+            box-shadow: 0 0 15px #ffcb05;
+            animation: zoomIn 1.3s ease-out;
         }
 
         .description-box {
-            font-size: 20px;
-            background-color: rgba(255, 0, 0, 0.8);
-            border: 5px solid black;
-            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffcb05;
             padding: 20px;
-            max-width: 80%;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f8f8f8;
             text-align: justify;
+            box-shadow: 0 0 10px #000;
+            backdrop-filter: blur(5px);
+            animation: fadeUp 1.5s ease-out;
         }
 
         .social-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 20px;
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            font-size: 18px;
+            padding: 12px 28px;
             text-decoration: none;
-            background-color: #b71c1c;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            background: linear-gradient(to right, #ffcb05, #7f0000);
+            color: black;
+            border-radius: 50px;
+            box-shadow: 0 0 15px #ffcb05;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
         }
 
         .social-link:hover {
-            background-color: #7f0000;
-            box-shadow: 0px 0px 10px white;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ffcb05;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <h1>WELCOME TO PUNJAB KINGS</h1>
+
+    <div class="legacy-section">
+        <h2>TEAM LEGACY</h2>
+        <ul class="legacy-list">
+            <li>🏆 IPL Finalists: 2014 (Runners-up)</li>
+            <li>🔥 Best League Stage Finish: 1st in 2014 Points Table</li>
+            <li>💥 Most Sixes in a Season: Glenn Maxwell (2014)</li>
+            <li>💪 Notable Captains: KL Rahul, Yuvraj Singh, Shreyas Iyer</li>
+            <li>🌟 Top International Stars: Chris Gayle, Glenn Maxwell, Eoin Morgan, Sam Curran</li>
+        </ul>
+    </div>
+
     <img class="team-image" src="{% static 'images/pbksimg.webp' %}" alt="Punjab Kings Logo">
-    
+
     <h1>DESCRIPTION</h1>
     <p class="description-box">
         The Punjab Kings (PBKS), established in 2008 and formerly known as Kings XI Punjab, are a franchise cricket team based in Mohali, Punjab, competing in the Indian Premier League (IPL). Owned by KPH Dream Cricket Private Limited, the team plays its home matches at the PCA New Stadium in Mullanpur. As of the 2025 season, PBKS is captained by Shreyas Iyer and coached by Ricky Ponting. The squad features a mix of experienced players and emerging talents, including Glenn Maxwell, Marcus Stoinis, and Marco Jansen. Despite being one of the original eight IPL teams, PBKS has yet to secure a championship title, with their best performance being runners-up in 2014. The team aims to break this streak and clinch their maiden title in the upcoming season.

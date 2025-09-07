@@ -1,3 +1,4 @@
+
 from django.db import models
 
 # Create your models here.
@@ -47,3 +48,32 @@ class Ipl_matches(models.Model):
     venue = models.CharField(max_length=100)
     date = models.DateField()
     predicted_winner = models.CharField(max_length=100, null=True, blank=True)  # Stores predicted winner
+
+class OverallResult(models.Model):
+    match_number = models.IntegerField()       # 🔢 Sequence helps track match flow
+    team1 = models.CharField(max_length=50)    # 🟡 Input team
+    team2 = models.CharField(max_length=50)    # 🔵 Opponent team
+    venue = models.CharField(max_length=100)   # 🏟️ Location-based influence
+    pitch_type = models.CharField(max_length=50)  # 🌱 Flat, green, dry, turning
+    predicted_winner = models.CharField(max_length=50)  # 🏆 Output label
+
+class GroundInfo(models.Model):
+    venue = models.CharField(max_length=100)
+    pitch_type = models.CharField(max_length=50)
+
+
+class PlayerPredict(models.Model):
+    player_name = models.CharField(max_length=50)
+    
+    strike_rate = models.FloatField(null=True, blank=True)
+    runs = models.IntegerField(null=True, blank=True)
+    
+    wickets = models.IntegerField(null=True, blank=True)
+    overs = models.FloatField(null=True, blank=True)
+    
+    venue = models.CharField(max_length=100)
+    pitch_type = models.CharField(max_length=50)  # e.g., Dry, Green, Dusty, Balanced
+    economy = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return self.player_name

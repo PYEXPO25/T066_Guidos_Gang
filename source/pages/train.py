@@ -40,7 +40,7 @@ else:
     model.fit(X_train, y_train)
 
     # Save model
-    model_path = "C:/Users/raahu/Desktop/Django8/mywebsite/pages/prediction/ml_model.pkl"
+    model_path = "D:/raahulkanna/New Desktop/django12/T066_Guidos_Gang/source/pages/prediction/ml_model.pkl"
     joblib.dump(model, model_path)
 
     print(f"Model saved successfully at: {model_path}")

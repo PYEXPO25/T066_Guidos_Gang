@@ -1,8 +1,7 @@
 {% block content %}
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
         display: flex;
@@ -10,89 +9,149 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
-        background-image: url('/static/images/mi2.jpg');
+        background-image: url('/static/images/cri.jpeg');
         background-size: cover;
         background-position: center;
+        background-attachment: fixed;
+        scroll-behavior: smooth;
     }
-    
+
+    /* Navbar */
     .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    z-index: 1000;
-}
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 15px 0;
+        text-align: center;
+        box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.2);
+        z-index: 1000;
+        animation: fadeInDown 0.6s ease;
+    }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 12px 18px;
-    display: inline-block;
-    transition: 0.3s ease-in-out;
-    border-radius: 5px;
-}
+    .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 12px 20px;
+        margin: 0 8px;
+        display: inline-block;
+        transition: 0.3s ease-in-out;
+        border-radius: 6px;
+    }
 
-.navbar a:hover {
-    background: blue;
-    color: yellow;
-    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
-}
+    .navbar a:hover {
+        background-color: royalblue;
+        color: yellow;
+        box-shadow: 0 0 10px rgba(0, 0, 255, 0.6);
+    }
 
-
+    /* Container */
     .container {
-        background: white;
-        padding: 20px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         width: 50%;
         text-align: center;
-        margin-top: 80px;
-        opacity: 0.9;
+        margin-top: 100px;
         background-image: url('/static/main.jpeg');
         background-size: cover;
         background-position: center;
+        animation: fadeInUp 1s ease;
     }
 
     h3 {
         color: #0c0f12;
+        margin-bottom: 20px;
+        font-size: 24px;
     }
 
     select, button, input {
-        padding: 8px;
+        padding: 10px;
         font-size: 16px;
-        margin: 10px auto;
-        border-radius: 5px;
+        margin: 12px auto;
+        border-radius: 6px;
         display: block;
         width: 80%;
         border: 1px solid #ccc;
+        transition: all 0.3s ease;
+    }
+
+    select:focus, input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
     }
 
     button {
         background-color: #0a0e0b;
-        color: white;
+        color: #fff;
         border: none;
         cursor: pointer;
         width: 50%;
-        margin: auto;
+        font-weight: bold;
+        transition: 0.3s ease-in-out;
     }
 
     button:hover {
-        background-color: #090909;
+        background-color: #1c1f1c;
+        box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .navbar a {
+            font-size: 1rem;
+            padding: 10px 14px;
+        }
+
+        select, button, input {
+            width: 100%;
+        }
+
+        button {
+            width: 70%;
+        }
     }
 </style>
 
     <div class="navbar">
         <a href="{% url 'home' %}">HOME</a>
-        <a href="{% url 'home' %}#achievements">ACHIEVEMENTS</a>
+        <a href="{% url 'predict_player' %}">AI</a>
         <a href="{% url 'home' %}#schedule">SCHEDULE</a>
         <a href="{% url 'prediction_view' %}">PREDICTION</a>
-        <a href="{% url 'overall_winner_view'%}">OVERALL PREDICTION</a>
+        <a href="{% url 'overall_winner'%}">OVERALL PREDICTION</a>
         <a href="{% url 'contact_us' %}">CONTACT US</a>
     </div>
     <div class="container">

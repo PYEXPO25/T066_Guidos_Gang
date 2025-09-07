@@ -4,135 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - IPL Predictor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('/static/images/mi2.jpg'); /* Change to your actual image path */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            text-align: center;
-        }
+<style>
+    /* ==== Global Body Styling ==== */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: gray;
+        background-image: url('/static/images/cri.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 190vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        text-align: center;
+    }
 
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-            z-index: 1000;
-        }
-        
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 12px 18px;
-            display: inline-block;
-            transition: 0.3s ease-in-out;
-            border-radius: 5px;
-        }
+    /* ==== Navbar Styling ==== */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 7%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        padding: 20px 0;
+        z-index: 9999;
+        animation: slideDown 0.8s ease-out;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    
+    }
 
-        .navbar a:hover {
-            background: blue;
-            color: yellow;
-            box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.6);
-        }
+    @keyframes navFadeIn {
+        from { top: -100px; opacity: 0; }
+        to { top: 0; opacity: 1; }
+    }
 
-        /* Contact Container */
-        /* Contact Container */
-.contact-container {
-    background: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
-    padding: 30px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
-}
+    .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        letter-spacing: 0.5px;
+    }
 
-/* Contact Info Styling */
-.contact-info {
-    font-size: 1.3rem; /* Slightly bigger */
-    font-weight: bold; /* Make it bold */
-    line-height: 1.8;
-    background: rgba(255, 255, 255, 0.2); /* Light semi-transparent background */
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-    color: white; /* Ensure text is white */
-}
+    .navbar a::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0%;
+        height: 3px;
+        background: yellow;
+        transition: 0.4s ease-in-out;
+        transform: translateX(-50%);
+        border-radius: 50px;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 250px;
-        }
+    .navbar a:hover::before {
+        width: 100%;
+    }
 
-        .contact-info {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
+    .navbar a:hover {
+        background: rgba(0, 0, 255, 0.5);
+        color: #ffeb3b;
+        box-shadow: 0px 0px 15px rgba(0, 0, 255, 0.6);
+        transform: scale(1.05);
+    }
 
-        /* WhatsApp Section */
-        .whatsapp-section {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
+    /* ==== Heading Styling ==== */
+    h1 {
+        font-size: 2.8rem;
+        margin-bottom: 230px;
+    }
 
-        .whatsapp-section a {
-            display: inline-block;
-            background: green;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.3s ease;
-        }
+    /* ==== Contact Container ==== */
+    .contact-container {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+        margin-top: 20px;
+        animation: fadeIn 1s ease;
+    }
 
-        .whatsapp-section a:hover {
-            background: darkgreen;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.6);
-        }
-        .instagram-section {
-    margin-top: 20px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    text-align: center;
-}
+    /* ==== Contact Info ==== */
+    .contact-info {
+        font-size: 1.3rem;
+        font-weight: bold;
+        line-height: 1.8;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+        color: white;
+    }
 
-.instagram-section a {
-    display: inline-block;
-    background: #E1306C; /* Instagram pinkish color */
-    color: white;
-    padding: 12px 18px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
+    /* ==== WhatsApp Section ==== */
+    .whatsapp-section {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+    }
 
-.instagram-section a:hover {
-    background: #C13584; /* Darker Instagram color */
-    box-shadow: 0px 0px 10px rgba(225, 48, 108, 0.6);
-}
-    </style>
+    .whatsapp-section a {
+        display: inline-block;
+        background: green;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+
+    .whatsapp-section a:hover {
+        background: darkgreen;
+        box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.6);
+    }
+
+    /* ==== Instagram Section ==== */
+    .instagram-section {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .instagram-section a {
+        display: inline-block;
+        background: #E1306C;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+
+    .instagram-section a:hover {
+        background: #C13584;
+        box-shadow: 0px 0px 10px rgba(225, 48, 108, 0.6);
+    }
+
+    /* ==== Utility Buttons ==== */
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #0056b3;
+    }
+
+    /* ==== Graph/Image Box ==== */
+    .result-box, .graph-container img {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        opacity: 0.95;
+        color: black;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 </head>
 <body>
 
@@ -141,7 +209,7 @@
     <a href="#achievements">ACHIEVEMENTS</a>
     <a href="#schedule">SCHEDULE</a>
     <a href="{% url 'prediction_view' %}">PREDICTION</a>
-    <a href="{% url 'overall_winner_view' %}">OVERALL PREDICTION</a>
+    <a href="{% url 'overall_winner' %}">OVERALL PREDICTION</a>
     <a href="{% url 'contact_us' %}">CONTACT US</a>
 </div>
 

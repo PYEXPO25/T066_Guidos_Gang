@@ -4,10 +4,13 @@ from pages.models import Player,Ipl_matches
 import joblib # type: ignore
 import numpy as np # type: ignore
 from pages.train1 import predict_match
-from django.db.models import Count
+from pages.models import OverallResult,GroundInfo
 from django.shortcuts import render
-
-
+from collections import Counter
+from collections import OrderedDict,defaultdict
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+import os
 def home(request):
     return render(request, 'home.html')
 
@@ -171,7 +174,7 @@ def predict_target(request):
         venue_encoded = venue_mapping.get(venue, 0)
 
         # Load trained model
-        model = joblib.load("C:/Users/raahu/Desktop/Django8/mywebsite/pages/prediction/ml_model.pkl")
+        model = joblib.load("D:/raahulkanna/New Desktop/django12/T066_Guidos_Gang/source/pages/prediction/ml_model.pkl")
 
         # Predict target score
         input_features = np.array([[present_score, balls_remaining, wickets_left, venue_encoded]])
@@ -197,55 +200,220 @@ def predict_win(request):
         present_score = int(request.POST["present_score"])
         wickets_left = int(request.POST["wickets_left"])
         balls_remaining = int(request.POST["balls_remaining"])
-        target=int(request.POST["target"])
-        bat_first=team1
-        
+        target = int(request.POST["target"])
+        bat_first = team1
+
         print("Batting First:", team1)
         print("Batting Second:", team2)
-        print("venue:",venue)
-        print("pre:",present_score)
-        print("wic:",wickets_left)
-        print("bal:",balls_remaining)
-        print("tar:",target)
-        print("Bat first:",bat_first)
+        print("venue:", venue)
+        print("pre:", present_score)
+        print("wic:", wickets_left)
+        print("bal:", balls_remaining)
+        print("tar:", target)
+        print("Bat first:", bat_first)
 
-        
-        team1=team1.lower()
-        team2=team2.lower()
-        bat_first=bat_first.lower()
+        # Lowercase for model input
+        team1_lower = team1.lower()
+        team2_lower = team2.lower()
+        bat_first_lower = bat_first.lower()
 
-        prediction = predict_match(team1, team2, venue, present_score, wickets_left, balls_remaining,bat_first,target)
-        return render(request, "eee1.html", {"prediction": prediction})
+        # 🎯 Make Prediction
+        prediction = predict_match(
+            team1_lower,
+            team2_lower,
+            venue,
+            present_score,
+            wickets_left,
+            balls_remaining,
+            bat_first_lower,
+            target,
+        )
+
+        # 📈 Calculate Key Factors
+        runs_needed = target - present_score
+        balls_used = 120 - balls_remaining
+        curr_rr = round(present_score / (balls_used / 6), 1) if balls_used != 0 else 0
+        req_rr = round(runs_needed / (balls_remaining / 6), 1) if balls_remaining != 0 else 0
+
+        # Determine chasing team (not bat_first)
+        chasing_team = team2 if bat_first == team1 else team1
+        wickets_lost = 10 - wickets_left
+
+        # Format key factors explanation
+        key_factors = (
+            f"📈 Key Factors Influencing Prediction:\n"
+            f"• {chasing_team.upper()} has lost {wickets_lost} wickets\n"
+            f"• Only {runs_needed} runs needed in {balls_remaining} balls\n"
+            f"• Current Run Rate: {curr_rr} (Required: {req_rr})"
+        )
+
+        context = {
+        "prediction": prediction,
+        "team1": team2.upper(), # If you're still using it
+        "chasing_team": chasing_team.upper(),
+        "wickets_left": 10 - wickets_left,
+        "balls_remaining": balls_remaining,
+        "runs_needed": runs_needed,
+        "curr_rr": curr_rr,
+        "req_rr": req_rr,
+}
+
+
+        return render(request, "eee1.html", context)
+
     return render(request, "result1.html")
 
+def clean_overallresult_duplicates():
+    grouped = defaultdict(list)
+    for obj in OverallResult.objects.all():
+        grouped[obj.match_number].append(obj)
 
+    for match_number, objects in grouped.items():
+        if len(objects) > 1:
+            # keep latest (highest id), delete the rest
+            sorted_objs = sorted(objects, key=lambda x: x.id, reverse=True)
+            for obj in sorted_objs[1:]:
+                obj.delete()
+def overall_winner(request):
+    if request.method == "POST":
+        for i in range(1, 11):  # Loop through 10 matches
+            team1 = request.POST.get(f"team1_{i}")
+            team2 = request.POST.get(f"team2_{i}")
+            venue = request.POST.get(f"venue_{i}")
+            pitch_type = request.POST.get(f"pitch_type_{i}")
+            predicted_winner = request.POST.get(f"predicted_winner_{i}")
 
-def get_top_winners():
-    winners = (
-        Ipl_matches.objects.values('predicted_winner')
-        .annotate(wins=Count('predicted_winner'))
-        .order_by('-wins')[:3]
-    )
+            if team1 and team2 and team1 != team2 and predicted_winner:
+                OverallResult.objects.create(
+                    match_number=i,
+                    team1=team1,
+                    team2=team2,
+                    venue=venue,
+                    pitch_type=pitch_type,
+                    predicted_winner=predicted_winner
+                )
+        return redirect("overall_result")
 
-    reasons = {
-        "Mumbai Indians": "Strong middle-order, experienced bowlers, and match-winning performances.",
-        "Chennai Super Kings": "Consistent leadership, all-rounders, and ability to chase well.",
-        "Royal Challengers Bangalore": "Powerful batting lineup and improved bowling attack.",
-        "Kolkata Knight Riders": "Aggressive openers, mystery spinners, and sharp fielding.",
-        "Rajasthan Royals": "Young talents, great captaincy, and game-changing performances.",
-        "Punjab Kings": "Explosive batting order but lacked consistency in past seasons.",
-        "Delhi Capitals": "A balanced squad with a mix of youth and experience.",
-        "Sunrisers Hyderabad": "Best bowling attack and strong opening partnerships."
-    }
+    # Team and ground info
+    teams = ["CSK", "RCB", "MI", "GT", "RR", "DC", "KKR", "LSG"]
+    pitch_types = list(GroundInfo.objects.values_list("pitch_type", flat=True).distinct())
+    venues = list(GroundInfo.objects.values_list("venue", flat=True).distinct())
 
-    result = []
-    for i, winner in enumerate(winners, start=1):
-        team_name = winner["predicted_winner"]
-        reason = reasons.get(team_name, "Excellent team performance throughout the season.")
-        result.append({"place": i, "team": team_name, "wins": winner["wins"], "reason": reason})
+    # Create random values for pre-fill observation
+    match_defaults = []
+    for i in range(1, 11):
+        team1, team2 = random.sample(teams, 2)
+        venue = random.choice(venues) if venues else "Unknown"
+        pitch_type = random.choice(pitch_types) if pitch_types else "Balanced"
+        predicted_winner = random.choice([team1, team2])
+        match_defaults.append({
+            "match_number": i,
+            "team1": team1,
+            "team2": team2,
+            "venue": venue,
+            "pitch_type": pitch_type,
+            "predicted_winner": predicted_winner,
+        })
 
-    return result
+    return render(request, "overall_predict.html", {
+        "teams": teams,
+        "venues": venues,
+        "pitch_types": pitch_types,
+        "match_defaults": match_defaults
+    })
 
-def overall_winner_view(request):
-    overall_winners = get_top_winners()
-    return render(request, "overall_predict.html", {"winners": overall_winners})
+def overall_result(request):
+    clean_overallresult_duplicates()
+    results = OverallResult.objects.all().order_by("match_number")
+    winner_list = [r.predicted_winner for r in results]
+    winner_counts = dict(Counter(winner_list))
+
+    if winner_counts:
+        max_win = max(winner_counts.values())
+        top_teams = [team for team, count in winner_counts.items() if count == max_win]
+
+        if len(top_teams) == 1:
+            overall_winner = top_teams[0]
+            tie = False
+        else:
+            overall_winner = None
+            tie = True
+    else:
+        overall_winner = None
+        tie = False
+        top_teams = []
+
+    return render(request, "overall_result.html", {
+        "results": results,
+        "winner_counts": winner_counts,
+        "overall_winner": overall_winner,
+        "tie": tie,
+        "top_teams": top_teams,
+    })
+
+def final_matchup(request):
+    if request.method == "POST":
+        tied_teams = request.POST.getlist("team")
+        final_winner = random.choice(tied_teams)
+
+        # You can store this result in session or DB if needed
+        request.session["final_winner"] = final_winner
+        return HttpResponseRedirect(reverse("final_result"))
+    
+def final_result(request):
+    winner = request.session.get("final_winner", None)
+    return render(request, "final_result.html", {"final_winner": winner})
+
+MODEL_PATH = os.path.join("pages", "prediction", "player_predict_model.pkl")
+ENCODERS_PATH = os.path.join("pages", "prediction", "player_predict_encoders.pkl")
+
+# 🔒 Safe model/encoder loading
+try:
+    model = joblib.load(MODEL_PATH)
+    label_encoders = joblib.load(ENCODERS_PATH)
+except Exception as e:
+    model = None
+    label_encoders = None
+    print(f"❌ Failed to load model or encoders: {e}")
+
+def predict_player(request):
+    if request.method == "POST":
+        try:
+            if not model or not label_encoders:
+                return render(request, "predict_player.html", {"error": "Model or encoders not loaded. Please retrain the model."})
+
+            # 📥 Get form inputs
+            strike_rate = float(request.POST.get("strike_rate"))
+            runs = int(request.POST.get("runs"))
+            wickets = int(request.POST.get("wickets"))
+            overs = float(request.POST.get("overs"))
+            venue = request.POST.get("venue")
+            pitch_type = request.POST.get("pitch_type")
+            economy = int(request.POST.get("economy"))
+
+            # 🎯 Encode categorical fields
+            venue_encoded = label_encoders["venue"].transform([venue])[0]
+            pitch_encoded = label_encoders["pitch_type"].transform([pitch_type])[0]
+
+            # 🧾 Prepare input
+            input_data = np.array([[strike_rate, runs, wickets, overs, venue_encoded, pitch_encoded, economy]])
+
+            # 🤖 Predict and decode player
+            prediction_encoded = model.predict(input_data)[0]
+            player_name = label_encoders["player_name"].inverse_transform([prediction_encoded])[0]
+
+            return render(request, "predict_player.html", {
+                "player_name": player_name,
+                "strike_rate": strike_rate,
+                "runs": runs,
+                "wickets": wickets,
+                "overs": overs,
+                "venue": venue,
+                "pitch_type": pitch_type,
+                "economy": economy,
+            })
+
+        except Exception as e:
+            return render(request, "predict_player.html", {"error": f"⚠️ Error: {str(e)}"})
+
+    return render(request, "predict_player.html")

@@ -5,72 +5,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gujarat Titans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, navy, lightskyblue);
-            background-attachment: fixed;
-            color: darkblue;
-            font-family: Arial, sans-serif;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom right, #031b40, #001222);
+            color: white;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 40px;
-            text-shadow: 2px 2px 5px black;
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00e6e6;
+            text-shadow: 2px 2px 8px #000;
+            animation: fadeDown 1s ease-out;
+        }
+
+        .legacy-section {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: rgba(0, 60, 90, 0.8);
+            border-left: 5px solid #00e6e6;
+            border-radius: 10px;
+            padding: 20px 25px;
+            box-shadow: 0 0 12px #000;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: #00e6e6;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        .legacy-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .legacy-list li::before {
+            content: "⭐ ";
+            margin-right: 8px;
+            color: #00e6e6;
         }
 
         .team-image {
-            width: 80%;
+            display: block;
+            margin: 0 auto 30px;
+            width: 85%;
             max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-            border: 5px solid white;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            border: 4px solid #00e6e6;
+            box-shadow: 0 0 15px #00e6e6;
+            animation: zoomIn 1.3s ease-out;
         }
 
         .description-box {
-            font-size: 20px;
-            background-color: rgba(135, 206, 250, 0.9);
-            border: 5px solid black;
-            color: darkblue;
+            background-color: rgba(0, 0, 30, 0.8);
+            border: 2px solid #00e6e6;
             padding: 20px;
-            max-width: 80%;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px black;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f0f0f0;
             text-align: justify;
+            box-shadow: 0 0 10px #000;
+            backdrop-filter: blur(5px);
+            animation: fadeUp 1.5s ease-out;
         }
 
         .social-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 20px;
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            font-size: 18px;
+            padding: 12px 28px;
             text-decoration: none;
-            background-color: darkblue;
+            background: linear-gradient(to right, #00e6e6, #004466);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 0 15px #00e6e6;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
         }
 
         .social-link:hover {
-            background-color: lightskyblue;
-            color: navy;
-            box-shadow: 0px 0px 10px black;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #00e6e6;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <h1>WELCOME TO GUJARAT TITANS</h1>
-    <img class="team-image" src="{% static 'images/gtimg.webp' %}" alt="Gujarat Titans Logo">
-    
+
+    <div class="legacy-section">
+        <h2>TEAM LEGACY</h2>
+        <ul class="legacy-list">
+            <li>🏆 IPL Champions: <strong>2022</strong></li>
+            <li>🥈 Runner-up: <strong>2023</strong></li>
+            <li>🔥 Debut Year Glory: <strong>Won IPL in their first season</strong></li>
+            <li>🎯 Best Bowling Attack: <strong>2022 & 2023</strong></li>
+            <li>💥 Iconic Players: <strong>Hardik Pandya, Shubman Gill, Rashid Khan</strong></li>
+        </ul>
+    </div>
+
+    <img class="team-image" src="{% static 'images/gtIMG.webp' %}" alt="GT Logo">
+
     <h1>DESCRIPTION</h1>
     <p class="description-box">
-        The Gujarat Titans (GT) are a prominent cricket franchise based in Ahmedabad, Gujarat, competing in the Indian Premier League (IPL). Established in 2021, the team made a remarkable debut in the 2022 season by clinching the IPL championship title. Owned by Irelia Sports India Private Limited, a subsidiary of CVC Capital Partners, the Titans play their home matches at the Narendra Modi Stadium, the world's largest cricket venue. As of the 2025 season, the team is captained by Shubman Gill and coached by Ashish Nehra. In the 2025 IPL auction, GT made significant acquisitions, including star pacers Kagiso Rabada and Mohammed Siraj, as well as explosive English batsman Jos Buttler, signaling their intent to build a formidable squad.
+        Gujarat Titans (GT), based in Ahmedabad, is one of the newest and most exciting franchises in the Indian Premier League (IPL), making an immediate impact by winning the title in their debut season in 2022. Playing their home matches at the magnificent Narendra Modi Stadium, GT has quickly built a reputation for resilience, all-round strength, and exceptional leadership. With a mix of global stars and local talent, the team features standout performers like Shubman Gill, Rashid Khan, and Mohit Sharma. Initially captained by Hardik Pandya, the team now eyes a strong comeback in the 2025 season with a re-energized squad and strategic focus.
     </p>
 
-    <a class="social-link" href="https://www.instagram.com/gujarat_titans?igsh=MXhwam5qdWExenp3Nw==" target="_blank">Follow on Instagram</a>
+    <a class="social-link" href="https://www.instagram.com/gujarat_titans/" target="_blank">Follow on Instagram</a>
 </body>
 </html>
